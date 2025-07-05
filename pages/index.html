@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Red+Rose:wght@300..700&display=swap"
+    rel="stylesheet" />
+  <title>Splash</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      /* Tanda interaktif */
+    }
+
+    .container {
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+
+    .splash-content {
+      background-color: #10b981;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .logo {
+      height: 160px;
+      width: auto;
+    }
+
+    .brand-title {
+      font-family: 'Red Rose', cursive;
+      position: absolute;
+      bottom: 36px;
+      font-size: 1.875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #3ed6b8;
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 768px) {
+      .brand-title {
+        font-size: 1.5rem;
+        bottom: 24px;
+      }
+
+      .logo {
+        height: 120px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .brand-title {
+        font-size: 1.25rem;
+        bottom: 20px;
+      }
+
+      .logo {
+        height: 100px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="splash-content" id="splash">
+      <div style="
+          width: 160px; 
+          height: 160px; 
+          background-color: rgba(255,255,255,0.9); 
+          border-radius: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 24px;
+          font-weight: bold;
+          color: #10b981;
+          text-align: center;
+        ">
+        KUSAKU<br>LOGO
+      </div>
+      <h1 class="brand-title">Kusaku</h1>
+    </div>
+  </div>
+
+  <script>
+    // Ketika user klik di mana saja di halaman splash, arahkan ke register.html
+    document.getElementById('splash').addEventListener('click', function () {
+      window.location.href = 'register.html'; // Ganti dengan path file register kamu
+    });
+  </script>
+</body>
+
+</html>

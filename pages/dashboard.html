@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kusaku Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Red+Rose:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0fdf4;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            min-height: 100vh;
+            background-color: #f0fdf4;
+            padding: 16px;
+            padding-bottom: 80px;
+            max-width: none;
+        }
+
+        /* Avatar Section */
+        .avatar-section {
+            display: flex;
+            margin-bottom: 16px;
+        }
+
+        .avatar-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #111827;
+            transition: opacity 0.2s;
+        }
+
+        .avatar-link:hover {
+            opacity: 0.7;
+        }
+
+        .avatar-link:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #4ade80;
+        }
+
+        .avatar-img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+        }
+
+        .avatar-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        /* Balance Card */
+        .balance-section {
+            margin-bottom: 32px;
+        }
+
+        .balance-card {
+            height: 165px;
+            background: linear-gradient(to bottom, #10b981, #059669);
+            border-radius: 16px;
+            padding: 20px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .brand-title {
+            font-family: 'Red Rose', cursive;
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .balance-amount {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 24px;
+            font-weight: 500;
+        }
+
+        .visibility-btn {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 8px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .btn:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #4ade80;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #10b981;
+            color: #10b981;
+        }
+
+        .btn-outline:hover {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-filled {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-filled:hover {
+            background: #059669;
+        }
+
+        .material-symbols-outlined {
+            font-size: 16px;
+        }
+
+        /* Transaction History */
+        .transaction-card {
+            background: white;
+            border-radius: 20px;
+            padding: 10px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .transaction-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin-bottom: 8px;
+        }
+
+        .transaction-title {
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .view-more-link {
+            font-size: 12px;
+            font-weight: 600;
+            color: #10b981;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .view-more-link:hover {
+            color: rgba(16, 185, 129, 0.7);
+        }
+
+        .view-more-link:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #4ade80;
+        }
+
+        /* Transaction Items */
+        .transaction-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            border-radius: 16px;
+            text-decoration: none;
+            color: inherit;
+            transition: background-color 0.2s;
+        }
+
+        .transaction-item:hover {
+            background-color: #ecfdf5;
+        }
+
+        .transaction-item:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #4ade80;
+        }
+
+        .transaction-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .transaction-icon {
+            font-size: 24px;
+            color: #10b981;
+            flex-shrink: 0;
+        }
+
+        .transaction-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .transaction-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #111827;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .transaction-id {
+            font-size: 12px;
+            color: #6b7280;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .transaction-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .transaction-amount {
+            font-size: 12px;
+            font-weight: 500;
+            color: #ef4444;
+        }
+
+        .transaction-chevron {
+            font-size: 20px;
+            color: #111827;
+        }
+
+        .transaction-divider {
+            margin: 10px 20px;
+            height: 1px;
+            background-color: #d1d5db;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            display: flex;
+            z-index: 10;
+        }
+
+        .nav-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 12px;
+            text-decoration: none;
+            color: #111827;
+            transition: background-color 0.2s;
+        }
+
+        .nav-item:hover {
+            background-color: #f9fafb;
+        }
+
+        .nav-item:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #4ade80;
+        }
+
+        .nav-icon {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .nav-text {
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            backdrop-filter: blur(8px);
+            z-index: 50;
+            display: none;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .modal.open {
+            display: flex;
+        }
+
+        .modal::backdrop {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 24px 32px;
+        }
+
+        .modal-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            border: none;
+            border-radius: 12px;
+            padding: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #10b981;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .modal-btn:hover {
+            background-color: #ecfdf5;
+        }
+
+        .modal-btn:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #4ade80;
+        }
+
+        .modal-btn.invisible {
+            visibility: hidden;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 36px 36px 0 0;
+            padding: 24px;
+        }
+
+        .modal-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #9ca3af;
+            border-radius: 16px;
+            background: white;
+            font-size: 14px;
+            color: #111827;
+        }
+
+        .form-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #4ade80;
+        }
+
+        .form-input::placeholder {
+            color: #9ca3af;
+        }
+
+        .input-icon-left {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+            font-size: 20px;
+        }
+
+        .input-icon-right {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+            font-size: 20px;
+        }
+
+        .form-input-left {
+            padding-left: 48px;
+        }
+
+        .form-input-right {
+            padding-right: 48px;
+        }
+
+        .section {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .section.hidden {
+            display: none;
+        }
+
+        .contact-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .contact-details {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .dot {
+            width: 4px;
+            height: 4px;
+            background: #6b7280;
+            border-radius: 50%;
+        }
+
+        .search-link {
+            font-size: 12px;
+            font-weight: 600;
+            color: #10b981;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .search-link:hover {
+            color: rgba(16, 185, 129, 0.7);
+        }
+
+        .search-link:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #4ade80;
+        }
+
+        /* Desktop Responsive Design */
+        @media (min-width: 769px) {
+            .container {
+                padding: 24px;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            
+            .balance-card {
+                height: 200px;
+                padding: 32px;
+            }
+            
+            .brand-title {
+                font-size: 32px;
+            }
+            
+            .balance-amount {
+                font-size: 32px;
+            }
+            
+            .action-buttons {
+                gap: 16px;
+            }
+            
+            .btn {
+                padding: 16px;
+                font-size: 14px;
+            }
+            
+            .transaction-card {
+                padding: 20px;
+            }
+            
+            .transaction-item {
+                padding: 16px;
+            }
+        }
+
+        /* Large screens */
+        @media (min-width: 1024px) {
+            .container {
+                padding: 32px;
+            }
+            
+            .balance-section {
+                margin-bottom: 48px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-content">
+            <!-- Avatar Section -->
+            <div class="avatar-section">
+                <a href="../pages/akun-pengaturan.html" class="avatar-link">
+                    <img src="https://avatar.iran.liara.run/public/11" alt="Avatar" class="avatar-img">
+                    <span class="avatar-name">John Doe</span>
+                </a>
+            </div>
+
+            <!-- Balance Section -->
+            <div class="balance-section">
+                <!-- Balance Card -->
+                <div class="balance-card">
+                    <h1 class="brand-title">Kusaku</h1>
+                    <h2 class="balance-amount">
+                        <span id="balance" data-balance-value="Rp. 52.000.000,00" data-show-balance="true">Rp. 52.000.000,00</span>
+                        <button id="visibilityButton" type="button" class="visibility-btn">
+                            <span class="material-symbols-outlined">visibility</span>
+                        </button>
+                    </h2>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button type="button" class="btn btn-outline" data-modal-target="modal-topup">
+                        <span class="material-symbols-outlined">download</span>
+                        <span>Top Up</span>
+                    </button>
+                    <button type="button" class="btn btn-filled" data-modal-target="modal-transfer">
+                        <span class="material-symbols-outlined">upload</span>
+                        <span>Transfer</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Transaction History -->
+            <div class="transaction-card">
+                <div class="transaction-header">
+                    <p class="transaction-title">Riwayat Transaksi</p>
+                    <a href="#" class="view-more-link">Lihat Lainnya</a>
+                </div>
+
+                <!-- Transaction Items -->
+                <a href="#" class="transaction-item">
+                    <div class="transaction-left">
+                        <span class="material-symbols-outlined transaction-icon">download</span>
+                        <div class="transaction-info">
+                            <span class="transaction-name">Ramon Altenwerth</span>
+                            <span class="transaction-id">90842375</span>
+                        </div>
+                    </div>
+                    <div class="transaction-right">
+                        <span class="transaction-amount">Rp. 50.000,00</span>
+                        <span class="material-symbols-outlined transaction-chevron">chevron_right</span>
+                    </div>
+                </a>
+                <div class="transaction-divider"></div>
+
+                <a href="#" class="transaction-item">
+                    <div class="transaction-left">
+                        <span class="material-symbols-outlined transaction-icon">download</span>
+                        <div class="transaction-info">
+                            <span class="transaction-name">Karen Denesik</span>
+                            <span class="transaction-id">90842375</span>
+                        </div>
+                    </div>
+                    <div class="transaction-right">
+                        <span class="transaction-amount">Rp. 50.000,00</span>
+                        <span class="material-symbols-outlined transaction-chevron">chevron_right</span>
+                    </div>
+                </a>
+                <div class="transaction-divider"></div>
+
+                <a href="#" class="transaction-item">
+                    <div class="transaction-left">
+                        <span class="material-symbols-outlined transaction-icon">download</span>
+                        <div class="transaction-info">
+                            <span class="transaction-name">Kerry Friesen</span>
+                            <span class="transaction-id">90842375</span>
+                        </div>
+                    </div>
+                    <div class="transaction-right">
+                        <span class="transaction-amount">Rp. 50.000,00</span>
+                        <span class="material-symbols-outlined transaction-chevron">chevron_right</span>
+                    </div>
+                </a>
+                <div class="transaction-divider"></div>
+
+                <a href="#" class="transaction-item">
+                    <div class="transaction-left">
+                        <span class="material-symbols-outlined transaction-icon">download</span>
+                        <div class="transaction-info">
+                            <span class="transaction-name">Ralph Skiles</span>
+                            <span class="transaction-id">90842375</span>
+                        </div>
+                    </div>
+                    <div class="transaction-right">
+                        <span class="transaction-amount">Rp. 50.000,00</span>
+                        <span class="material-symbols-outlined transaction-chevron">chevron_right</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <a href="#" class="nav-item">
+                <span class="material-symbols-outlined nav-icon">home</span>
+                <span class="nav-text">Beranda</span>
+            </a>
+            <a href="../pages/transaction-history.html" class="nav-item">
+                <span class="material-symbols-outlined nav-icon">receipt_long</span>
+                <span class="nav-text">Riwayat</span>
+            </a>
+            <a href="../pages/account.html" class="nav-item">
+                <span class="material-symbols-outlined nav-icon">person</span>
+                <span class="nav-text">Akun</span>
+            </a>
+        </nav>
+
+        <!-- Modal Top Up -->
+        <div id="modal-topup" class="modal">
+            <div class="modal-header">
+                <button type="button" class="modal-btn invisible">
+                    <span class="material-symbols-outlined">chevron_left</span>
+                    <span>Back</span>
+                </button>
+                <button type="button" class="modal-btn close-modal" data-modal-target="modal-topup">
+                    <span class="material-symbols-outlined">close</span>
+                    <span>Close</span>
+                </button>
+            </div>
+            <div class="modal-content">
+                <form class="modal-form">
+                    <div class="input-group">
+                        <div class="input-wrapper">
+                            <input type="number" class="form-input form-input-left" placeholder="Nominal rupiah" inputmode="numeric">
+                            <span class="material-symbols-outlined input-icon-left">account_balance_wallet</span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-filled">
+                        <span class="material-symbols-outlined">send</span>
+                        <span>Top Up</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal Transfer -->
+        <div id="modal-transfer" class="modal">
+            <div class="modal-header">
+                <button type="button" id="button-back-modal-content" class="modal-btn invisible">
+                    <span class="material-symbols-outlined">chevron_left</span>
+                    <span>Back</span>
+                </button>
+                <button type="button" class="modal-btn close-modal" data-modal-target="modal-transfer">
+                    <span class="material-symbols-outlined">close</span>
+                    <span>Close</span>
+                </button>
+            </div>
+            <div class="modal-content">
+                <!-- Account Check Section -->
+                <div id="modal-content--account-check" class="section">
+                    <form class="modal-form">
+                        <div class="contact-header">
+                            <div class="contact-info">
+                                <svg class="logo" viewBox="0 0 100 20" fill="currentColor">
+                                    <text x="0" y="15" font-family="Red Rose, cursive" font-weight="700" font-size="14" fill="#10b981">KUSAKU</text>
+                                </svg>
+                            </div>
+                            <a href="#" class="search-link" onclick="showSearchContact()">Cari Kontak</a>
+                        </div>
+                        <div class="input-group">
+                            <div class="input-wrapper">
+                                <input type="text" class="form-input form-input-right" placeholder="Masukan KUSAKU ID">
+                                <span class="material-symbols-outlined input-icon-right">search</span>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-filled">
+                            <span class="material-symbols-outlined">search</span>
+                            <span>Cek Rekening</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Search Contact Section -->
+                <div id="modal-content--search-contact" class="section hidden">
+                    <div class="input-group">
+                        <div class="input-wrapper">
+                            <input type="text" class="form-input form-input-right" placeholder="Cari nama orang / no rekening">
+                            <span class="material-symbols-outlined input-icon-right">search</span>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="transaction-item" onclick="showInputNominal()">
+                        <div class="transaction-left">
+                            <span class="material-symbols-outlined transaction-icon">person</span>
+                            <div class="transaction-info">
+                                <span class="transaction-name">Daryl Bergstrom</span>
+                                <span class="transaction-id">90842375</span>
+                            </div>
+                        </div>
+                        <div class="transaction-right">
+                            <span class="material-symbols-outlined transaction-chevron">chevron_right</span>
+                        </div>
+                    </a>
+                    <div class="transaction-divider"></div>
+
+                    <a href="#" class="transaction-item" onclick="showInputNominal()">
+                        <div class="transaction-left">
+                            <span class="material-symbols-outlined transaction-icon">person</span>
+                            <div class="transaction-info">
+                                <span class="transaction-name">Mrs. Doreen Adams</span>
+                                <span class="transaction-id">90842375</span>
+                            </div>
+                        </div>
+                        <div class="transaction-right">
+                            <span class="material-symbols-outlined transaction-chevron">chevron_right</span>
+                        </div>
+                    </a>
+                    <div class="transaction-divider"></div>
+
+                    <a href="#" class="transaction-item" onclick="showInputNominal()">
+                        <div class="transaction-left">
+                            <span class="material-symbols-outlined transaction-icon">person</span>
+                            <div class="transaction-info">
+                                <span class="transaction-name">Dr. Reginald Carroll</span>
+                                <span class="transaction-id">90842375</span>
+                            </div>
+                        </div>
+                        <div class="transaction-right">
+                            <span class="material-symbols-outlined transaction-chevron">chevron_right</span>
+                        </div>
+                    </a>
+                    <div class="transaction-divider"></div>
+
+                    <a href="#" class="transaction-item" onclick="showInputNominal()">
+                        <div class="transaction-left">
+                            <span class="material-symbols-outlined transaction-icon">person</span>
+                            <div class="transaction-info">
+                                <span class="transaction-name">Eric Jenkins</span>
+                                <span class="transaction-id">90842375</span>
+                            </div>
+                        </div>
+                        <div class="transaction-right">
+                            <span class="material-symbols-outlined transaction-chevron">chevron_right</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Input Nominal Section -->
+                <div id="modal-content--input-nominal" class="section hidden">
+                    <form class="modal-form">
+                        <div class="contact-header">
+                            <div class="contact-info">
+                                <svg class="logo" viewBox="0 0 100 20" fill="currentColor">
+                                    <text x="0" y="15" font-family="Red Rose, cursive" font-weight="700" font-size="14" fill="#10b981">KUSAKU</text>
+                                </svg>
+                                <div class="contact-details">
+                                    <span>Jane Dane</span>
+                                    <div class="dot"></div>
+                                    <span>239523770</span>
+                                </div>
+                            </div>
+                            <a href="#" class="search-link" onclick="showSearchContact()">Cari Kontak</a>
+                        </div>
+                        <div class="input-group">
+                            <div class="input-wrapper">
+                                <input type="number" class="form-input form-input-right" placeholder="Nominal rupiah" inputmode="numeric">
+                                <span class="material-symbols-outlined input-icon-right">search</span>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-filled">
+                            <span class="material-symbols-outlined">send</span>
+                            <span>Lanjut Kirim</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const visibilityButton = document.getElementById('visibilityButton');
+        const balanceElement = document.getElementById('balance');
+
+        visibilityButton.addEventListener('click', function () {
+            const isVisible = balanceElement.getAttribute('data-show-balance') === 'true';
+            const balanceValue = balanceElement.getAttribute('data-balance-value');
+            if (isVisible) {
+                balanceElement.textContent = '•••••••••••••';
+                balanceElement.setAttribute('data-show-balance', 'false');
+                this.innerHTML = '<span class="material-symbols-outlined">visibility_off</span>';
+            } else {
+                balanceElement.textContent = balanceValue;
+                balanceElement.setAttribute('data-show-balance', 'true');
+                this.innerHTML = '<span class="material-symbols-outlined">visibility</span>';
+            }
+        });
+
+        const modalButtons = document.querySelectorAll('[data-modal-target]');
+        const closeButtons = document.querySelectorAll('.close-modal');
+
+        modalButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const targetModal = document.getElementById(this.getAttribute('data-modal-target'));
+                if (targetModal) targetModal.classList.add('open');
+            });
+        });
+
+        closeButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const targetModal = document.getElementById(this.getAttribute('data-modal-target'));
+                if (targetModal) targetModal.classList.remove('open');
+            });
+        });
+
+        function showSearchContact() {
+            document.getElementById('modal-content--account-check').classList.add('hidden');
+            document.getElementById('modal-content--search-contact').classList.remove('hidden');
+            document.getElementById('modal-content--input-nominal').classList.add('hidden');
+            document.getElementById('button-back-modal-content').classList.remove('invisible');
+        }
+
+        function showInputNominal() {
+            document.getElementById('modal-content--account-check').classList.add('hidden');
+            document.getElementById('modal-content--search-contact').classList.add('hidden');
+            document.getElementById('modal-content--input-nominal').classList.remove('hidden');
+            document.getElementById('button-back-modal-content').classList.remove('invisible');
+        }
+
+        function showAccountCheck() {
+            document.getElementById('modal-content--account-check').classList.remove('hidden');
+            document.getElementById('modal-content--search-contact').classList.add('hidden');
+            document.getElementById('modal-content--input-nominal').classList.add('hidden');
+            document.getElementById('button-back-modal-content').classList.add('invisible');
+        }
+
+        document.getElementById('button-back-modal-content').addEventListener('click', function () {
+            if (!document.getElementById('modal-content--search-contact').classList.contains('hidden')) {
+                showAccountCheck();
+            } else if (!document.getElementById('modal-content--input-nominal').classList.contains('hidden')) {
+                showSearchContact();
+            }
+        });
+
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function (e) {
+                if (e.target === this) this.classList.remove('open');
+            });
+        });
+
+        // Top Up Logic
+        document.querySelector('#modal-topup .btn-filled').addEventListener('click', () => {
+            const input = document.querySelector('#modal-topup input');
+            const nominal = parseInt(input.value);
+            if (!isNaN(nominal) && nominal > 0) {
+                const currentBalance = parseInt(balanceElement.getAttribute('data-balance-value').replace(/[^\d]/g, ''));
+                const newBalance = currentBalance + nominal;
+                const formatted = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(newBalance);
+                balanceElement.setAttribute('data-balance-value', formatted);
+                if (balanceElement.getAttribute('data-show-balance') === 'true') {
+                    balanceElement.textContent = formatted;
+                }
+                input.value = '';
+                document.getElementById('modal-topup').classList.remove('open');
+            } else {
+                alert('Masukkan nominal Top Up yang valid!');
+            }
+        });
+
+        // Transfer Logic
+        document.querySelector('#modal-content--input-nominal .btn-filled').addEventListener('click', () => {
+            const input = document.querySelector('#modal-content--input-nominal input');
+            const nominal = parseInt(input.value);
+            if (!isNaN(nominal) && nominal > 0) {
+                const currentBalance = parseInt(balanceElement.getAttribute('data-balance-value').replace(/[^\d]/g, ''));
+                if (nominal > currentBalance) return alert('Saldo tidak cukup!');
+                const newBalance = currentBalance - nominal;
+                const formattedBalance = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(newBalance);
+                balanceElement.setAttribute('data-balance-value', formattedBalance);
+                if (balanceElement.getAttribute('data-show-balance') === 'true') {
+                    balanceElement.textContent = formattedBalance;
+                }
+                const transactionCard = document.querySelector('.transaction-card');
+                const newItem = document.createElement('a');
+                newItem.className = 'transaction-item';
+                newItem.href = '#';
+                newItem.innerHTML = `
+                        <div class="transaction-left">
+                            <span class="material-symbols-outlined transaction-icon">upload</span>
+                            <div class="transaction-info">
+                                <span class="transaction-name">Transfer ke Jane Dane</span>
+                                <span class="transaction-id">AUTO-${Date.now()}</span>
+                            </div>
+                        </div>
+                        <div class="transaction-right">
+                            <span class="transaction-amount">-${new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(nominal)}</span>
+                            <span class="material-symbols-outlined transaction-chevron">chevron_right</span>
+                        </div>
+                    `;
+                const divider = document.createElement('div');
+                divider.className = 'transaction-divider';
+                transactionCard.appendChild(divider);
+                transactionCard.appendChild(newItem);
+                input.value = '';
+                document.getElementById('modal-transfer').classList.remove('open');
+                showAccountCheck();
+            } else {
+                alert('Masukkan nominal transfer yang valid!');
+            }
+        });
+    </script>

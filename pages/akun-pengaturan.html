@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pengaturan Akun</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0fdf4;
+            color: #111827;
+        }
+
+        .app-bar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: #fff;
+            padding: 16px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            text-decoration: none;
+            color: #111827;
+            transition: color 0.3s ease;
+        }
+
+        .back-button:hover {
+            color: #9ca3af;
+        }
+
+        .app-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .main-content {
+            margin-top: 80px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            padding-bottom: 100px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .file-upload-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .file-upload-label {
+            cursor: pointer;
+        }
+
+        .file-upload-circle {
+            width: 100px;
+            height: 100px;
+            background: #d1d5db;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s ease;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .file-upload-circle:hover {
+            opacity: 0.7;
+        }
+
+        .file-upload-input {
+            display: none;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-label {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #111827;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .form-input,
+        .form-select {
+            width: 100%;
+            border: 1px solid #9ca3af;
+            border-radius: 16px;
+            padding: 12px 48px;
+            font-size: 14px;
+            background: #fff;
+            color: #111827;
+            transition: 0.3s ease;
+        }
+
+        .form-input::placeholder {
+            color: #9ca3af;
+        }
+
+        .form-input:focus,
+        .form-select:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #22c55e;
+        }
+
+        .form-input:invalid {
+            background-color: #fecaca;
+            color: #dc2626;
+        }
+
+        .input-icon {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+            font-size: 20px;
+        }
+
+        .input-icon.left {
+            left: 16px;
+        }
+
+        .input-icon.right {
+            right: 16px;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 16px;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            background: transparent;
+            color: #22c55e;
+            border: 2px solid #22c55e;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #22c55e;
+            color: white;
+        }
+
+        .navbar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            background: #fff;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 12px 0;
+            text-decoration: none;
+            color: #111827;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .nav-item:hover {
+            background: #f3f4f6;
+        }
+
+        .material-symbols-rounded {
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="app-bar">
+        <a href="#" class="back-button" onclick="history.back()">
+            <span class="material-symbols-rounded">arrow_back</span>
+        </a>
+        <p class="app-title">Pengaturan Akun</p>
+    </div>
+
+    <div class="main-content">
+
+        <!-- Form Info -->
+        <form class="card" id="form-info">
+            <div class="card-title">Informasi Personal</div>
+            <div class="file-upload-container">
+                <label for="file-upload" class="file-upload-label">
+                    <div class="file-upload-circle" id="preview">
+                        <span class="material-symbols-rounded" style="font-size: 40px;">upload</span>
+                    </div>
+                    <input type="file" id="file-upload" class="file-upload-input" />
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Nama</label>
+                <div class="input-wrapper">
+                    <input type="text" class="form-input" placeholder="Masukkan Nama" required />
+                    <div class="input-icon left"><span class="material-symbols-rounded">person</span></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Email</label>
+                <div class="input-wrapper">
+                    <input type="email" class="form-input" placeholder="Masukkan Email" required />
+                    <div class="input-icon left"><span class="material-symbols-rounded">mail</span></div>
+                </div>
+            </div>
+            <button type="submit" class="btn">
+                <span class="material-symbols-rounded">save</span> SIMPAN
+            </button>
+        </form>
+
+        <!-- Form PIN -->
+        <form class="card" id="form-pin">
+            <div class="card-title">Keamanan PIN</div>
+            <div class="form-group">
+                <label class="form-label">PIN Lama</label>
+                <div class="input-wrapper">
+                    <input type="password" class="form-input" id="old-pin" placeholder="PIN lama" minlength="6"
+                        maxlength="6" required />
+                    <div class="input-icon left"><span class="material-symbols-rounded">security</span></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label">PIN Baru</label>
+                <div class="input-wrapper">
+                    <input type="password" class="form-input" id="new-pin" placeholder="PIN baru" minlength="6"
+                        maxlength="6" required />
+                    <div class="input-icon left"><span class="material-symbols-rounded">security</span></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Konfirmasi PIN</label>
+                <div class="input-wrapper">
+                    <input type="password" class="form-input" id="confirm-pin" placeholder="Konfirmasi PIN"
+                        minlength="6" maxlength="6" required />
+                    <div class="input-icon left"><span class="material-symbols-rounded">security</span></div>
+                </div>
+            </div>
+            <button type="submit" class="btn">
+                <span class="material-symbols-rounded">save</span> SIMPAN
+            </button>
+        </form>
+
+        <!-- Form Penarikan -->
+        <form class="card" id="form-bank">
+            <div class="card-title">Penarikan Dana</div>
+            <div class="form-group">
+                <label class="form-label">Bank</label>
+                <div class="input-wrapper">
+                    <select class="form-select" required>
+                        <option value="">-- Pilih Bank --</option>
+                        <option value="bri">BRI</option>
+                        <option value="bca">BCA</option>
+                        <option value="jago">Jago</option>
+                    </select>
+                    <div class="input-icon left"><span class="material-symbols-rounded">account_balance</span></div>
+                    <div class="input-icon right"><span class="material-symbols-rounded">keyboard_arrow_down</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Nama Rekening</label>
+                <div class="input-wrapper">
+                    <input type="text" class="form-input" placeholder="Nama di rekening" required />
+                    <div class="input-icon left"><span class="material-symbols-rounded">person</span></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label">No. Rekening</label>
+                <div class="input-wrapper">
+                    <input type="text" id="account-number" class="form-input" placeholder="Nomor rekening" required />
+                    <div class="input-icon left"><span class="material-symbols-rounded">account_balance_wallet</span>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn">
+                <span class="material-symbols-rounded">save</span> SIMPAN
+            </button>
+        </form>
+    </div>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="#" class="nav-item"><span class="material-symbols-rounded">home</span><span>Beranda</span></a>
+        <a href="#" class="nav-item"><span class="material-symbols-rounded">receipt_long</span><span>Riwayat</span></a>
+        <a href="#" class="nav-item"><span class="material-symbols-rounded">person</span><span>Akun</span></a>
+    </div>
+
+    <!-- Interaktif Script -->
+    <script>
+        const preview = document.getElementById('preview');
+        const fileUpload = document.getElementById('file-upload');
+        fileUpload.addEventListener('change', function () {
+            const file = this.files[0];
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = function () {
+                    preview.style.backgroundImage = `url(${reader.result})`;
+                    preview.innerHTML = '';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                alert('Hanya file gambar yang diperbolehkan.');
+                fileUpload.value = '';
+                preview.style.backgroundImage = '';
+                preview.innerHTML = '<span class="material-symbols-rounded" style="font-size: 40px;">upload</span>';
+            }
+        });
+
+        // Validasi PIN Baru
+        const formPin = document.getElementById('form-pin');
+        formPin.addEventListener('submit', function (e) {
+            const newPin = document.getElementById('new-pin').value;
+            const confirmPin = document.getElementById('confirm-pin').value;
+            if (newPin !== confirmPin) {
+                e.preventDefault();
+                alert('PIN baru dan konfirmasi tidak sama.');
+            } else {
+                alert('PIN berhasil diperbarui!');
+            }
+        });
+
+        // Validasi rekening hanya angka
+        const rekening = document.getElementById('account-number');
+        rekening.addEventListener('input', () => {
+            rekening.value = rekening.value.replace(/\D/g, '');
+        });
+
+        // Umum: alert jika valid
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function (e) {
+                if (!form.checkValidity()) {
+                    e.preventDefault();
+                    alert('Harap lengkapi semua isian.');
+                } else {
+                    // Optional: alert sukses
+                    if (form.id !== 'form-pin') alert('Data berhasil disimpan!');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

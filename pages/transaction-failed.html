@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transaction Failed</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f0fdf4;
+      color: #111827;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .app-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      z-index: 10;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .back-button {
+      font-size: 20px;
+      color: #111827;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .main {
+      padding-top: 72px;
+      padding-bottom: 80px;
+      background-color: #f0fdf4;
+    }
+
+    .header-bg {
+      height: 260px;
+      background-color: #f87171;
+    }
+
+    .content {
+      margin-top: -168px;
+      padding: 16px;
+    }
+
+    .title {
+      text-align: center;
+      font-size: 22px;
+      font-weight: 700;
+      color: white;
+      animation: fadeIn 1s ease-out;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 13px;
+      color: white;
+      margin-top: 6px;
+      margin-bottom: 20px;
+      animation: fadeIn 1.2s ease-out;
+    }
+
+    .card {
+      background-color: #ffffff;
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      margin-bottom: 20px;
+    }
+
+    .transaction-id {
+      text-align: right;
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    .amount {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      margin: 12px 0;
+      color: #ef4444;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin: 6px 0;
+    }
+
+    .info-label {
+      color: #6b7280;
+    }
+
+    .info-value {
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .btn-help {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #10b981;
+      background-color: transparent;
+      border: 2px solid #10b981;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+      width: 100%;
+    }
+
+    .btn-help:hover {
+      background-color: #10b981;
+      color: white;
+    }
+
+    .navbar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      display: flex;
+      justify-content: space-around;
+      border-top: 1px solid #e5e7eb;
+      z-index: 10;
+    }
+
+    .nav-item {
+      flex: 1;
+      text-align: center;
+      padding: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #111827;
+      text-decoration: none;
+      transition: background-color 0.2s;
+    }
+
+    .nav-item:hover {
+      background-color: #f9fafb;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <div class="app-bar">
+    <a class="back-button" onclick="history.back()">←</a>
+    <p class="text-lg font-semibold">Status Transaksi</p>
+  </div>
+
+  <!-- Main -->
+  <div class="main">
+    <div class="header-bg"></div>
+    <div class="content">
+      <h1 class="title">Transaksi Gagal Diproses</h1>
+      <p class="subtitle">Dana sudah dikembalikan ke saldo Anda</p>
+
+      <div class="card">
+        <p class="transaction-id">ID Transaksi #KS08387847</p>
+        <p class="amount">- Rp. 300.000</p>
+
+        <div class="info-row">
+          <span class="info-label">Kategori</span>
+          <span class="info-value">Uang Keluar</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Penerima</span>
+          <span class="info-value">Jane Dane</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Bank Penerima</span>
+          <span class="info-value">BCA</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Nomor Rekening</span>
+          <span class="info-value">2397582398</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Waktu Transaksi</span>
+          <span class="info-value">20 Juni 2024 19:00 WIB</span>
+        </div>
+      </div>
+
+      <!-- Bantuan -->
+      <button class="btn-help" onclick="openHelp()">Butuh Bantuan?</button>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <a href="../pages/dashboard.html" class="nav-item">Beranda</a>
+    <a href="../pages/transaction-history.html" class="nav-item">Riwayat</a>
+    <a href="../pages/account.html" class="nav-item">Akun</a>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function openHelp() {
+      alert("Transaksi gagal diproses.\nSilakan hubungi bantuan di 0812-3456-7890 atau kunjungi halaman Bantuan.");
+    }
+  </script>
+</body>
+
+</html>

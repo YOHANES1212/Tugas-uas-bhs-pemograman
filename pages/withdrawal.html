@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Withdrawal Fullscreen</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      font-family: 'Inter', sans-serif;
+      background-color: #ecfdf5;
+      color: #111827;
+    }
+
+    .app-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background-color: white;
+      padding: 1rem;
+      z-index: 10;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .app-bar a {
+      text-decoration: none;
+      font-size: 1.25rem;
+      color: #4b5563;
+    }
+
+    .app-bar p {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .content {
+      padding: 6rem 1rem 5rem;
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    form {
+      width: 100%;
+      background: white;
+      padding: 2rem 1rem;
+      border-radius: 0;
+      box-shadow: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-group {
+      position: relative;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #9ca3af;
+      border-radius: 0.5rem;
+      font-size: 0.875rem;
+      color: #111827;
+      background-color: white;
+    }
+
+    .form-group small {
+      color: #ef4444;
+      font-size: 0.75rem;
+      margin-top: 4px;
+      display: block;
+    }
+
+    .toggle-pin {
+      position: absolute;
+      top: 35px;
+      right: 10px;
+      background: none;
+      border: none;
+      color: #10b981;
+      font-size: 0.75rem;
+      cursor: pointer;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #22c55e;
+      color: white;
+      font-weight: 600;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #16a34a;
+    }
+
+    .help-text {
+      text-align: center;
+      font-size: 0.75rem;
+      color: #9ca3af;
+      margin-top: 1rem;
+    }
+
+    .help-text a {
+      color: #22c55e;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .navbar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      background-color: white;
+      padding: 0.75rem 0;
+      border-top: 1px solid #e5e7eb;
+      z-index: 10;
+    }
+
+    .navbar a {
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #111827;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app-bar">
+    <a href="#" onclick="history.back()">&larr;</a>
+    <p>Buat Penarikan Saldo</p>
+  </div>
+
+  <div class="content">
+    <form id="withdrawForm">
+      <div class="form-group">
+        <label for="input-nominal">NOMINAL</label>
+        <input type="number" id="input-nominal" placeholder="Tersedia: Rp. 20.000.000" />
+        <small id="nominalError"></small>
+      </div>
+
+      <div class="form-group">
+        <label for="pin">PIN</label>
+        <input type="password" id="pin" maxlength="6" placeholder="Masukkan 6 digit PIN" />
+        <button class="toggle-pin" type="button" onclick="togglePin()">Lihat</button>
+        <small id="pinError"></small>
+      </div>
+
+      <button type="submit">Proses Permintaan</button>
+
+      <p class="help-text">
+        Proses pencairan maks 2 hari kerja.<br />
+        <a href="#">Hubungi Pusat Bantuan</a> jika ada kendala
+      </p>
+    </form>
+  </div>
+
+  <div class="navbar">
+    <a href="../pages/dashboard.html">Beranda</a>
+    <a href="../pages/transaction-history.html">Riwayat</a>
+    <a href="../pages/account.html">Akun</a>
+  </div>
+
+  <script>
+    function togglePin() {
+      const pinInput = document.getElementById("pin");
+      const toggleBtn = document.querySelector(".toggle-pin");
+      if (pinInput.type === "password") {
+        pinInput.type = "text";
+        toggleBtn.textContent = "Sembunyikan";
+      } else {
+        pinInput.type = "password";
+        toggleBtn.textContent = "Lihat";
+      }
+    }
+
+    document.getElementById("withdrawForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const nominal = document.getElementById("input-nominal").value.trim();
+      const pin = document.getElementById("pin").value.trim();
+
+      let valid = true;
+
+      // Reset errors
+      document.getElementById("nominalError").textContent = "";
+      document.getElementById("pinError").textContent = "";
+
+      if (!nominal || parseInt(nominal) <= 0) {
+        document.getElementById("nominalError").textContent = "Masukkan nominal yang valid.";
+        valid = false;
+      }
+
+      if (!pin || pin.length !== 6 || isNaN(pin)) {
+        document.getElementById("pinError").textContent = "PIN harus 6 digit angka.";
+        valid = false;
+      }
+
+      if (valid) {
+        alert("✅ Penarikan diproses. Mohon tunggu maksimal 2 hari kerja.");
+        // Submit ke backend di sini jika ada
+        this.reset();
+      }
+    });
+  </script>
+</body>
+
+</html>

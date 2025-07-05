@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transaction Canceled</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+      background-color: #f0fdf4;
+      color: #111827;
+    }
+
+    .container {
+      width: 100%;
+      min-height: 100vh;
+      padding-bottom: 80px;
+      background-color: #f0fdf4;
+      position: relative;
+    }
+
+    .app-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      z-index: 10;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .back-button {
+      cursor: pointer;
+      font-size: 20px;
+      text-decoration: none;
+      color: #111827;
+    }
+
+    .main-content {
+      padding-top: 80px;
+    }
+
+    .header-bg {
+      height: 260px;
+      background-color: #facc15;
+      width: 100%;
+    }
+
+    .card-section {
+      margin-top: -168px;
+      padding: 16px;
+    }
+
+    .card-title {
+      text-align: center;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      animation: fadeIn 1s ease;
+    }
+
+    .card-subtitle {
+      text-align: center;
+      font-size: 13px;
+      color: #374151;
+      margin-bottom: 16px;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 16px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      padding: 16px;
+      margin-top: 20px;
+    }
+
+    .transaction-id {
+      text-align: right;
+      font-size: 12px;
+      margin-bottom: 8px;
+      color: #6b7280;
+    }
+
+    .transaction-amount {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 16px;
+      color: #ef4444;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin: 6px 0;
+    }
+
+    .info-label {
+      color: #6b7280;
+    }
+
+    .info-value {
+      font-weight: 600;
+    }
+
+    .help-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 24px;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #10b981;
+      background-color: transparent;
+      border: 2px solid #10b981;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: background-color 0.2s, color 0.2s;
+      width: 100%;
+    }
+
+    .help-button:hover {
+      background-color: #10b981;
+      color: white;
+    }
+
+    .navbar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      display: flex;
+      justify-content: space-around;
+      border-top: 1px solid #e5e7eb;
+      z-index: 10;
+    }
+
+    .nav-item {
+      flex: 1;
+      text-align: center;
+      padding: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #111827;
+      text-decoration: none;
+      transition: background-color 0.2s;
+    }
+
+    .nav-item:hover {
+      background-color: #f9fafb;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- App Bar -->
+    <div class="app-bar">
+      <a class="back-button" onclick="history.back()">←</a>
+      <p class="text-lg font-semibold">Status Transaksi</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="header-bg"></div>
+
+      <div class="card-section">
+        <h1 class="card-title"> Transaksi Sedang Dibatalkan</h1>
+        <p class="card-subtitle">Dana sudah dikembalikan ke saldo Anda</p>
+
+        <div class="card">
+          <p class="transaction-id">ID Transaksi #KS08387847</p>
+          <p class="transaction-amount">- Rp. 300.000</p>
+
+          <div class="info-row">
+            <span class="info-label">Kategori</span>
+            <span class="info-value">Uang Keluar</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Penerima</span>
+            <span class="info-value">Jane Dane</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Bank Penerima</span>
+            <span class="info-value">BCA</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Nomor Rekening</span>
+            <span class="info-value">2397582398</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Waktu Transaksi</span>
+            <span class="info-value">20 Juni 2024 19:00 WIB</span>
+          </div>
+        </div>
+
+        <!-- Help Button -->
+        <button class="help-button" onclick="openHelp()">Butuh Bantuan?</button>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <div class="navbar">
+      <a href="../pages/dashboard.html" class="nav-item">Beranda</a>
+      <a href="../pages/transaction-history.html" class="nav-item">Riwayat</a>
+      <a href="../pages/account.html" class="nav-item">Akun</a>
+    </div>
+  </div>
+
+  <script>
+    function openHelp() {
+      alert("Silakan hubungi CS kami melalui WhatsApp di +62-812-3456-7890");
+    }
+  </script>
+</body>
+
+</html>

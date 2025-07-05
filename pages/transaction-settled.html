@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transaction Settled</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #f0fdf4;
+      color: #111827;
+      font-size: 14px;
+    }
+
+    .container {
+      max-width: 768px;
+      margin: 0 auto;
+      padding-bottom: 80px;
+      position: relative;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    .app-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      z-index: 10;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .app-bar a {
+      font-size: 20px;
+      text-decoration: none;
+      color: #111827;
+      cursor: pointer;
+    }
+
+    .content {
+      margin-top: 88px;
+      padding: 16px;
+    }
+
+    .header {
+      height: 260px;
+      background-color: #4ade80;
+    }
+
+    .title {
+      color: #fff;
+      text-align: center;
+      margin-top: -168px;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      margin-top: 24px;
+      animation: fadeIn 1s ease-in;
+    }
+
+    .card p {
+      margin-bottom: 8px;
+    }
+
+    .card .amount {
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 16px;
+      color: #16a34a;
+    }
+
+    .info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin: 6px 0;
+    }
+
+    .info .label {
+      color: #6b7280;
+    }
+
+    .info .value {
+      font-weight: 600;
+    }
+
+    .action-btn {
+      margin-top: 20px;
+      padding: 10px;
+      font-weight: bold;
+      border: 2px solid #4ade80;
+      color: #4ade80;
+      background: transparent;
+      border-radius: 12px;
+      text-transform: uppercase;
+      cursor: pointer;
+      width: 100%;
+      transition: 0.3s ease;
+    }
+
+    .action-btn:hover {
+      background: #4ade80;
+      color: #fff;
+    }
+
+    .navbar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      background: #fff;
+      padding: 10px 0;
+      border-top: 1px solid #e5e7eb;
+      z-index: 10;
+    }
+
+    .nav-item>a {
+      color: #111827;
+      text-decoration: none;
+    }
+
+    .nav-item {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- App Bar -->
+    <div class="app-bar">
+      <a href="#" onclick="history.back()">&#8592;</a>
+      <p>Status Transaksi</p>
+    </div>
+
+    <!-- Header & Content -->
+    <div class="header"></div>
+    <div class="content">
+      <h1 class="title"> Transaksi Berhasil Diproses</h1>
+
+      <div class="card">
+        <p style="text-align: right; font-size: 12px;">ID Transaksi #KS08387847</p>
+        <p class="amount">- Rp. 300.000</p>
+        <div class="info">
+          <span class="label">Kategori</span>
+          <span class="value">Uang Keluar</span>
+        </div>
+        <div class="info">
+          <span class="label">Penerima</span>
+          <span class="value">Jane Dane</span>
+        </div>
+        <div class="info">
+          <span class="label">Bank Penerima</span>
+          <span class="value">BCA</span>
+        </div>
+        <div class="info">
+          <span class="label">Nomor Rekening</span>
+          <span class="value">2397582398</span>
+        </div>
+        <div class="info">
+          <span class="label">Waktu Transaksi</span>
+          <span class="value">20 Juni 2024 19:00 WIB</span>
+        </div>
+      </div>
+
+      <button class="action-btn" onclick="lihatTransaksiLain()">Lihat Transaksi Lainnya</button>
+    </div>
+
+    <!-- Navbar -->
+    <div class="navbar">
+      <div class="nav-item"> <a href="../pages/dashboard.html">Beranda</a></div>
+      <div class="nav-item"><a href="../pages/transaction-history.html">Riwayat</a></div>
+      <div class="nav-item"><a href="../pages/account.html">Akun</a></div>
+    </div>
+  </div>
+
+  <!-- JS Interaktivitas -->
+  <script>
+    function lihatTransaksiLain() {
+      const confirmLihat = confirm("Apakah Anda ingin melihat riwayat transaksi lainnya?");
+      if (confirmLihat) {
+        window.location.href = "../pages/transaction-history.html";
+      }
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transaction History</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f0fdf4;
+      color: #111827;
+    }
+
+    .app-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border-bottom: 1px solid #e5e7eb;
+      z-index: 10;
+    }
+
+    .back-button {
+      font-size: 20px;
+      cursor: pointer;
+      text-decoration: none;
+      color: #111827;
+    }
+
+    .main {
+      padding-top: 72px;
+      padding-bottom: 80px;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    .search-box {
+      margin-bottom: 16px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #9ca3af;
+      border-radius: 16px;
+      font-size: 14px;
+    }
+
+    .transaction-card {
+      background-color: white;
+      border-radius: 20px;
+      padding: 12px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 16px;
+    }
+
+    .transaction-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      cursor: pointer;
+    }
+
+    .transaction-item:hover {
+      background-color: #ecfdf5;
+      border-radius: 16px;
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+
+    .transaction-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .transaction-info .icon {
+      font-size: 20px;
+      color: #10b981;
+    }
+
+    .transaction-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .transaction-name {
+      font-weight: 600;
+      font-size: 14px;
+      color: #111827;
+    }
+
+    .transaction-date {
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    .transaction-right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .transaction-amount {
+      font-size: 12px;
+      color: #ef4444;
+      font-weight: 500;
+    }
+
+    .divider {
+      height: 1px;
+      background-color: #d1d5db;
+      margin: 0 20px;
+    }
+
+    .navbar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      display: flex;
+      justify-content: space-around;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .nav-item {
+      text-align: center;
+      padding: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #111827;
+      cursor: pointer;
+      text-decoration: none;
+      width: 100%;
+    }
+
+    .nav-item:hover {
+      background-color: #f9fafb;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app-bar">
+    <a class="back-button" onclick="history.back()">←</a>
+    <p class="text-lg font-semibold">Riwayat Transaksi</p>
+  </div>
+
+  <div class="main">
+    <div class="search-box">
+      <input type="text" placeholder="Cari transaksi" oninput="handleSearch(this.value)" />
+    </div>
+
+    <div class="transaction-card" id="transaction-list">
+      <!-- Item 1 -->
+      <div class="transaction-item">
+        <div class="transaction-info">
+          <span class="icon"></span>
+          <div class="transaction-details">
+            <span class="transaction-name">Daryl Bergstrom</span>
+            <span class="transaction-date">25 August 2024</span>
+          </div>
+        </div>
+        <div class="transaction-right">
+          <span class="transaction-amount">Rp. 50.000,00</span>
+        </div>
+      </div>
+      <div class="divider"></div>
+
+      <!-- Item 2 -->
+      <div class="transaction-item">
+        <div class="transaction-info">
+          <span class="icon"></span>
+          <div class="transaction-details">
+            <span class="transaction-name">Mrs. Doreen Adams</span>
+            <span class="transaction-date">25 August 2024</span>
+          </div>
+        </div>
+        <div class="transaction-right">
+          <span class="transaction-amount">Rp. 50.000,00</span>
+        </div>
+      </div>
+      <div class="divider"></div>
+
+      <!-- Item 3 -->
+      <div class="transaction-item">
+        <div class="transaction-info">
+          <span class="icon"></span>
+          <div class="transaction-details">
+            <span class="transaction-name">Dr. Reginald Carroll</span>
+            <span class="transaction-date">25 August 2024</span>
+          </div>
+        </div>
+        <div class="transaction-right">
+          <span class="transaction-amount">Rp. 50.000,00</span>
+        </div>
+      </div>
+      <div class="divider"></div>
+
+      <!-- Item 4 -->
+      <div class="transaction-item">
+        <div class="transaction-info">
+          <span class="icon"></span>
+          <div class="transaction-details">
+            <span class="transaction-name">Eric Jenkins</span>
+            <span class="transaction-date">25 August 2024</span>
+          </div>
+        </div>
+        <div class="transaction-right">
+          <span class="transaction-amount">Rp. 50.000,00</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <a href="../pages/dashboard.html" class="nav-item">Beranda</a>
+    <a href="../pages/transaction-history.html" class="nav-item">Riwayat</a>
+    <a href="../pages/account.html" class="nav-item">Akun</a>
+  </div>
+
+  <script>
+    function handleSearch(keyword) {
+      const items = document.querySelectorAll('.transaction-item');
+      const lower = keyword.toLowerCase();
+      items.forEach(item => {
+        const name = item.querySelector('.transaction-name').innerText.toLowerCase();
+        if (name.includes(lower)) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>

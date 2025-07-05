@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Forgot PIN</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;1,700&family=Red+Rose:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html, body {
+        height: 100%;
+        width: 100%;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        line-height: 1.5;
+      }
+
+      .container {
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+      }
+
+      .main-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        height: 100%;
+        background-color: #f0fdf4; /* green-50 */
+        padding: 16px;
+      }
+
+      .content-wrapper {
+        width: 100%;
+        max-width: 400px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .illustration {
+        width: 160px;
+        height: 160px;
+        background-color: #dbeafe;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: 600;
+        color: #1e40af;
+        text-align: center;
+        margin: 0 auto;
+        border: 2px dashed #93c5fd;
+      }
+
+
+      .header-section {
+        margin: 32px 0 20px;
+        text-align: center;
+      }
+
+      .title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #111827;
+        margin-bottom: 8px;
+      }
+
+      .description {
+        font-size: 12px;
+        font-weight: 500;
+        color: #9ca3af;
+        line-height: 1.4;
+      }
+
+      .form {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .input-wrapper {
+        position: relative;
+      }
+
+      .input-field {
+        width: 100%;
+        border-radius: 16px;
+        border: 1px solid #9ca3af;
+        background-color: white;
+        padding: 12px 48px;
+        font-size: 14px;
+        font-weight: 400;
+        color: #111827;
+        outline: none;
+        transition: 0.2s ease;
+      }
+
+      .input-field::placeholder {
+        color: #9ca3af;
+      }
+
+      .input-field:focus {
+        box-shadow: 0 0 0 2px #4ade80;
+        border-color: #4ade80;
+      }
+
+      .input-icon {
+        position: absolute;
+        top: 50%;
+        left: 16px;
+        transform: translateY(-50%);
+        pointer-events: none;
+        font-size: 18px;
+        color: #9ca3af;
+      }
+
+      .submit-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border-radius: 16px;
+        background-color: #10b981;
+        padding: 10px;
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: 0.2s ease;
+      }
+
+      .submit-button:hover {
+        background-color: #047857;
+      }
+
+      .button-icon::before {
+        content: "➤";
+        font-size: 16px;
+      }
+
+      /* Responsive */
+      @media (max-width: 480px) {
+        .input-field {
+          padding: 10px 40px;
+        }
+
+        .submit-button {
+          font-size: 13px;
+          padding: 8px;
+        }
+
+        .input-icon {
+          left: 12px;
+        }
+
+        .illustration {
+          width: 120px;
+          height: 120px;
+        }
+
+        .title {
+          font-size: 16px;
+        }
+
+        .description {
+          font-size: 11px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="main-wrapper">
+        <div class="content-wrapper">
+          
+          <div class="illustration">
+            <img src="../img/forgot password.png" alt="logo">
+          </div>
+
+          
+          <div class="header-section">
+            <h1 class="title">Lupa PIN</h1>
+            <p class="description">
+              Segera cek email Anda setelah klik KIRIM RESET LINK
+            </p>
+          </div>
+
+          
+          <form class="form">
+            <div class="input-wrapper">
+              <input
+                type="email"
+                placeholder="Email"
+                class="input-field"
+              />
+              <div class="input-icon">✉</div>
+            </div>
+
+            <button type="button" class="submit-button">
+              <span class="button-icon"></span>
+              <span>Kirim Reset Link</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
