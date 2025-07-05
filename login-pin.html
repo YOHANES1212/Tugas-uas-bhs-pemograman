@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="id">
 
 <head>
     <meta charset="UTF-8" />
@@ -231,10 +231,12 @@
                     <rect x="70" y="70" width="20" height="30" rx="2" fill="white" />
                     <circle cx="80" cy="75" r="3" fill="#22c55e" />
                 </svg>
+
                 <div class="header">
-                    <h1 class="title">Masukan 6 Digit PIN</h1>
-                    <p class="description">Masukan 6 Digit PIN yang telah Anda daftarkan sebelumnya</p>
+                    <h1 class="title">Masukkan 6 Digit PIN</h1>
+                    <p class="description">Masukkan 6 digit PIN yang telah Anda daftarkan sebelumnya</p>
                 </div>
+
                 <form class="form" id="pin-form">
                     <div class="input-group">
                         <div class="input-wrapper">
@@ -248,12 +250,14 @@
                         <span class="button-icon"></span>
                     </button>
                 </form>
+
                 <p class="help-text">
-                    <a href="/pages/login-pin-forgot.html" class="forgot-link">Saya lupa PIN</a>
+                    <a href="login-pin-forgot.html" class="forgot-link">Saya lupa PIN</a>
                 </p>
             </div>
         </div>
     </div>
+
     <script>
         const form = document.getElementById('pin-form');
         const pin = document.getElementById('pin');
@@ -261,7 +265,7 @@
             e.preventDefault();
             const value = pin.value.trim();
             if (/^\d{6}$/.test(value)) {
-                window.location.href = "/pages/dashboard.html";
+                window.location.href = "dashboard.html";
             } else {
                 alert("PIN harus terdiri dari 6 digit angka.");
             }

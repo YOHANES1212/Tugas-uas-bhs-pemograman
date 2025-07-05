@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Status Transaksi - Pending</title>
+  <title>Transaction Canceled</title>
   <style>
     * {
       box-sizing: border-box;
@@ -12,17 +12,20 @@
       padding: 0;
     }
 
+    html,
     body {
+      height: 100%;
+      width: 100%;
       font-family: 'Inter', sans-serif;
       background-color: #f0fdf4;
       color: #111827;
     }
 
     .container {
-      max-width: 768px;
-      margin: 0 auto;
-      padding-bottom: 80px;
+      width: 100%;
       min-height: 100vh;
+      padding-bottom: 80px;
+      background-color: #f0fdf4;
       position: relative;
     }
 
@@ -40,21 +43,21 @@
       border-bottom: 1px solid #e5e7eb;
     }
 
-    .app-bar a {
+    .back-button {
+      cursor: pointer;
       font-size: 20px;
       text-decoration: none;
       color: #111827;
-      cursor: pointer;
     }
 
-    .main {
+    .main-content {
       padding-top: 80px;
-      animation: fadeIn 0.8s ease-out;
     }
 
     .header-bg {
       height: 260px;
-      background-color: #9ca3af;
+      background-color: #facc15;
+      width: 100%;
     }
 
     .card-section {
@@ -64,17 +67,17 @@
 
     .card-title {
       text-align: center;
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 700;
       margin-bottom: 8px;
-      color: white;
+      animation: fadeIn 1s ease;
     }
 
     .card-subtitle {
       text-align: center;
       font-size: 13px;
-      color: #f3f4f6;
-      margin-bottom: 12px;
+      color: #374151;
+      margin-bottom: 16px;
     }
 
     .card {
@@ -97,7 +100,7 @@
       font-weight: bold;
       text-align: center;
       margin-bottom: 16px;
-      color: #f59e0b;
+      color: #ef4444;
     }
 
     .info-row {
@@ -113,29 +116,28 @@
 
     .info-value {
       font-weight: 600;
-      color: #111827;
     }
 
-    .action-button {
+    .help-button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      margin-top: 20px;
+      margin-top: 24px;
       padding: 10px 16px;
       font-size: 13px;
       font-weight: 600;
-      color: #ef4444;
+      color: #10b981;
       background-color: transparent;
-      border: 2px solid #ef4444;
+      border: 2px solid #10b981;
       border-radius: 16px;
       cursor: pointer;
       transition: background-color 0.2s, color 0.2s;
       width: 100%;
     }
 
-    .action-button:hover {
-      background-color: #ef4444;
+    .help-button:hover {
+      background-color: #10b981;
       color: white;
     }
 
@@ -169,7 +171,7 @@
     @keyframes fadeIn {
       from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(-10px);
       }
 
       to {
@@ -183,15 +185,16 @@
 <body>
   <div class="container">
     <div class="app-bar">
-      <a onclick="history.back()">←</a>
+      <a class="back-button" onclick="history.back()">←</a>
       <p class="text-lg font-semibold">Status Transaksi</p>
     </div>
 
-    <div class="main">
+    <div class="main-content">
       <div class="header-bg"></div>
+
       <div class="card-section">
-        <h1 class="card-title">Transaksi Sedang Diproses</h1>
-        <p class="card-subtitle">Mohon tunggu beberapa saat hingga transaksi selesai.</p>
+        <h1 class="card-title">Transaksi Sedang Dibatalkan</h1>
+        <p class="card-subtitle">Dana sudah dikembalikan ke saldo Anda</p>
 
         <div class="card">
           <p class="transaction-id">ID Transaksi #KS08387847</p>
@@ -219,23 +222,20 @@
           </div>
         </div>
 
-        <button class="action-button" onclick="cancelTransaction()">&#10006; Batalkan Transaksi</button>
+        <button class="help-button" onclick="openHelp()">Butuh Bantuan?</button>
       </div>
     </div>
 
     <div class="navbar">
-      <a href="../pages/dashboard.html" class="nav-item">Beranda</a>
-      <a href="../pages/transaction-history.html" class="nav-item">Riwayat</a>
-      <a href="../pages/account.html" class="nav-item">Akun</a>
+      <a href="dashboard.html" class="nav-item">Beranda</a>
+      <a href="transaction-history.html" class="nav-item">Riwayat</a>
+      <a href="account.html" class="nav-item">Akun</a>
     </div>
   </div>
 
   <script>
-    function cancelTransaction() {
-      const confirmCancel = confirm("Apakah Anda yakin ingin membatalkan transaksi ini?");
-      if (confirmCancel) {
-        alert("Transaksi berhasil dibatalkan.\nSaldo Anda akan dikembalikan.");
-      }
+    function openHelp() {
+      alert("Silakan hubungi CS kami melalui WhatsApp di +62-812-3456-7890");
     }
   </script>
 </body>

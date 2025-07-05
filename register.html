@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Register Create PIN</title>
+  <title>Register</title>
+  <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
@@ -15,55 +16,52 @@
       box-sizing: border-box;
     }
 
-    html,
     body {
-      width: 100%;
-      height: 100%;
       font-family: 'Inter', sans-serif;
       background-color: #f0fdf4;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
     }
 
     .container {
       max-width: 768px;
-      margin: 0 auto;
-      height: 100vh;
-      padding: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 100%;
     }
 
     .content {
-      width: 100%;
+      background-color: #f0fdf4;
       display: flex;
       flex-direction: column;
+      align-items: center;
       gap: 16px;
+      padding: 16px;
     }
 
-    .illustration {
-      height: 160px;
-      max-width: 100%;
-      margin: 0 auto;
-      display: block;
-      animation: bounce 2s infinite;
-      transform-origin: bottom;
-    }
-
-    @keyframes bounce {
-
-      0%,
-      100% {
-        transform: translateY(0);
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
       }
 
       50% {
-        transform: translateY(-10px);
+        transform: translateY(-8px);
+      }
+
+      100% {
+        transform: translateY(0px);
       }
     }
 
+    .content img {
+      height: 160px;
+      object-fit: contain;
+      animation: float 3s ease-in-out infinite;
+    }
+
     .text-group {
-      margin-top: 32px;
-      margin-bottom: 20px;
+      margin: 32px 0 20px;
       text-align: center;
     }
 
@@ -78,10 +76,10 @@
       font-size: 12px;
       font-weight: 500;
       color: #9ca3af;
-      line-height: 1.5;
     }
 
-    .form {
+    form {
+      width: 100%;
       display: flex;
       flex-direction: column;
       gap: 16px;
@@ -93,14 +91,14 @@
 
     .input-field {
       width: 100%;
+      padding: 12px 48px;
       border-radius: 16px;
       border: 1px solid #9ca3af;
-      background-color: white;
-      padding: 12px 48px;
       font-size: 14px;
+      background-color: white;
       color: #111827;
       outline: none;
-      transition: all 0.2s ease;
+      transition: 0.2s;
     }
 
     .input-field::placeholder {
@@ -113,23 +111,12 @@
     }
 
     .input-field:invalid {
-      background-color: #fecaca;
+      background-color: white;
       color: #7f1d1d;
       caret-color: #7f1d1d;
     }
 
-    .input-field:invalid:focus {
-      border-color: #7f1d1d;
-      box-shadow: 0 0 0 2px #7f1d1d;
-    }
-
-    .input-field:disabled {
-      background-color: #f3f4f6;
-      border-color: #d1d5db;
-      cursor: not-allowed;
-    }
-
-    .icon-placeholder {
+    .icon {
       position: absolute;
       left: 16px;
       top: 50%;
@@ -141,8 +128,8 @@
 
     .btn {
       display: inline-flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       gap: 8px;
       padding: 10px;
       font-size: 14px;
@@ -151,10 +138,9 @@
       color: white;
       background-color: #10b981;
       border: none;
-      border-radius: 16px;
+      border-radius: 12px;
       text-decoration: none;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
+      transition: 0.2s ease;
     }
 
     .btn:hover {
@@ -167,47 +153,35 @@
       cursor: not-allowed;
     }
 
-    .footer-text {
+    .footer {
       margin-top: 12px;
       text-align: center;
       font-size: 12px;
       color: #9ca3af;
     }
 
-    .footer-text a {
+    .footer a {
       color: #10b981;
       font-weight: 600;
       text-decoration: none;
     }
 
-    .footer-text a:hover {
+    .footer a:hover {
       color: #059669;
     }
 
     @media (max-width: 480px) {
-      .illustration {
-        height: 120px;
+      .input-field {
+        padding: 10px 40px;
+      }
+
+      .icon {
+        left: 12px;
       }
 
       .btn {
         padding: 8px;
         font-size: 13px;
-      }
-
-      .text-group h1 {
-        font-size: 16px;
-      }
-
-      .text-group p {
-        font-size: 11px;
-      }
-
-      .input-field {
-        padding: 10px 40px;
-      }
-
-      .icon-placeholder {
-        left: 12px;
       }
     }
   </style>
@@ -216,31 +190,35 @@
 <body>
   <div class="container">
     <div class="content">
-      <img src="../img/fingerprint.png" alt="Fingerprint" class="illustration" />
+
+      <img src="../img/color=green (1).png" alt="Logo KUSAKU" />
+
       <div class="text-group">
-        <h1>Buat 6 Digit PIN</h1>
-        <p>Buatlah 6 digit PIN untuk masuk lebih aman</p>
+        <h1>Buat Akun Baru</h1>
+        <p>Hanya beberapa langkah untuk buat akun baru Anda</p>
       </div>
-      <form class="form" method="post" action="#">
+
+      <form action="#" method="post">
         <div class="input-wrapper">
-          <input type="password" placeholder="6 Digit PIN" class="input-field" maxlength="6" pattern="[0-9]{6}" />
-          <div class="icon-placeholder"></div>
+          <input type="text" class="input-field" placeholder="Nama" required />
+          <div class="icon"></div>
         </div>
+
         <div class="input-wrapper">
-          <input type="password" placeholder="Konfirmasi Ulang PIN" class="input-field" maxlength="6"
-            pattern="[0-9]{6}" />
-          <div class="icon-placeholder"></div>
+          <input type="email" class="input-field" placeholder="Email" required />
+          <div class="icon"></div>
         </div>
-        <a href="/pages/register-email-confirm.html" class="btn">
+
+        <a href="register-pin-create.html" class="btn">
           <span>Lanjutkan</span>
           <span>➡</span>
         </a>
+
+        <p class="footer">
+          Sudah punya akun?
+          <a href="login.html">Masuk dengan akun saya</a>
+        </p>
       </form>
-      <p class="footer-text">
-        Dengan masuk atau daftar, Anda sudah setuju dengan
-        <a href="#">Ketentuan Layanan</a> dan
-        <a href="#">Kebijakan Privasi</a> KUSAKU
-      </p>
     </div>
   </div>
 </body>

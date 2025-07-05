@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Transaction Failed</title>
+  <title>Transaction Expired</title>
   <style>
     * {
       box-sizing: border-box;
@@ -25,11 +25,11 @@
       top: 0;
       left: 0;
       width: 100%;
-      background-color: white;
+      background-color: #ffffff;
       padding: 16px;
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 20px;
       z-index: 10;
       border-bottom: 1px solid #e5e7eb;
     }
@@ -43,13 +43,13 @@
 
     .main {
       padding-top: 72px;
-      padding-bottom: 80px;
       background-color: #f0fdf4;
+      padding-bottom: 80px;
     }
 
     .header-bg {
       height: 260px;
-      background-color: #f87171;
+      background-color: #fb7185;
     }
 
     .content {
@@ -61,14 +61,14 @@
       text-align: center;
       font-size: 22px;
       font-weight: 700;
-      color: white;
+      color: #ffffff;
       animation: fadeIn 1s ease-out;
     }
 
     .subtitle {
       text-align: center;
       font-size: 13px;
-      color: white;
+      color: #ffffff;
       margin-top: 6px;
       margin-bottom: 20px;
       animation: fadeIn 1.2s ease-out;
@@ -82,32 +82,32 @@
       margin-bottom: 20px;
     }
 
-    .transaction-id {
+    .card .transaction-id {
       text-align: right;
       font-size: 12px;
       color: #6b7280;
     }
 
-    .amount {
+    .card .amount {
+      text-align: center;
       font-size: 24px;
       font-weight: bold;
-      text-align: center;
-      margin: 12px 0;
       color: #ef4444;
+      margin: 12px 0;
     }
 
-    .info-row {
+    .info {
       display: flex;
       justify-content: space-between;
       font-size: 13px;
       margin: 6px 0;
     }
 
-    .info-label {
+    .label {
       color: #6b7280;
     }
 
-    .info-value {
+    .value {
       font-weight: 600;
       color: #111827;
     }
@@ -125,13 +125,13 @@
       border: 2px solid #10b981;
       border-radius: 16px;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: background-color 0.2s, color 0.2s;
       width: 100%;
     }
 
     .btn-help:hover {
       background-color: #10b981;
-      color: white;
+      color: #ffffff;
     }
 
     .navbar {
@@ -139,7 +139,7 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      background-color: white;
+      background-color: #ffffff;
       display: flex;
       justify-content: space-around;
       border-top: 1px solid #e5e7eb;
@@ -184,32 +184,32 @@
   <div class="main">
     <div class="header-bg"></div>
     <div class="content">
-      <h1 class="title">Transaksi Gagal Diproses</h1>
-      <p class="subtitle">Dana sudah dikembalikan ke saldo Anda</p>
+      <h1 class="title">Transaksi Kadaluarsa</h1>
+      <p class="subtitle">Anda sudah melewati batas waktu transaksi yang diharapkan</p>
 
       <div class="card">
         <p class="transaction-id">ID Transaksi #KS08387847</p>
         <p class="amount">- Rp. 300.000</p>
 
-        <div class="info-row">
-          <span class="info-label">Kategori</span>
-          <span class="info-value">Uang Keluar</span>
+        <div class="info">
+          <span class="label">Kategori</span>
+          <span class="value">Uang Keluar</span>
         </div>
-        <div class="info-row">
-          <span class="info-label">Penerima</span>
-          <span class="info-value">Jane Dane</span>
+        <div class="info">
+          <span class="label">Penerima</span>
+          <span class="value">Jane Dane</span>
         </div>
-        <div class="info-row">
-          <span class="info-label">Bank Penerima</span>
-          <span class="info-value">BCA</span>
+        <div class="info">
+          <span class="label">Bank Penerima</span>
+          <span class="value">BCA</span>
         </div>
-        <div class="info-row">
-          <span class="info-label">Nomor Rekening</span>
-          <span class="info-value">2397582398</span>
+        <div class="info">
+          <span class="label">Nomor Rekening</span>
+          <span class="value">2397582398</span>
         </div>
-        <div class="info-row">
-          <span class="info-label">Waktu Transaksi</span>
-          <span class="info-value">20 Juni 2024 19:00 WIB</span>
+        <div class="info">
+          <span class="label">Waktu Transaksi</span>
+          <span class="value">20 Juni 2024 19:00 WIB</span>
         </div>
       </div>
 
@@ -218,14 +218,14 @@
   </div>
 
   <div class="navbar">
-    <a href="../pages/dashboard.html" class="nav-item">Beranda</a>
-    <a href="../pages/transaction-history.html" class="nav-item">Riwayat</a>
-    <a href="../pages/account.html" class="nav-item">Akun</a>
+    <a href="dashboard.html" class="nav-item">Beranda</a>
+    <a href="transaction-history.html" class="nav-item">Riwayat</a>
+    <a href="account.html" class="nav-item">Akun</a>
   </div>
 
   <script>
     function openHelp() {
-      alert("Transaksi gagal diproses.\nSilakan hubungi bantuan di 0812-3456-7890 atau kunjungi halaman Bantuan.");
+      alert("Transaksi kadaluarsa.\nSilakan hubungi tim bantuan kami di 0812-3456-7890 atau kunjungi halaman bantuan.");
     }
   </script>
 </body>

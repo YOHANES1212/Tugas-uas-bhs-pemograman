@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Akun</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0fdf4;
+            color: #111827;
+        }
+
+        .container {
+            width: 100%;
+            position: relative;
+        }
+
+        .app-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            background-color: white;
+            border-bottom: 1px solid #e5e7eb;
+            z-index: 10;
+        }
+
+        .back-button {
+            color: #111827;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            transition: background-color 0.2s;
+        }
+
+        .app-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .main-content {
+            padding-top: 88px;
+            padding-bottom: 80px;
+        }
+
+        .hero-section {
+            background: linear-gradient(to right, #22c55e, #16a34a);
+            height: 200px;
+        }
+
+        .content-wrapper {
+            margin-top: -80px;
+            padding: 16px;
+        }
+
+        .profile-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .profile-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .profile-name {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .profile-id {
+            font-size: 12px;
+        }
+
+        .withdraw-button {
+            background-color: white;
+            color: #22c55e;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .menu-card {
+            background: white;
+            margin-top: 24px;
+            border-radius: 16px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            color: #111827;
+            border-top: 1px solid #f3f4f6;
+        }
+
+        .menu-item:first-child {
+            border-top: none;
+        }
+
+        .menu-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .material-symbols-rounded {
+            font-size: 24px;
+            color: #22c55e;
+        }
+
+        .menu-text {
+            font-weight: 500;
+        }
+
+        .logout-button {
+            margin-top: 24px;
+            width: 100%;
+            border: 2px solid #22c55e;
+            background-color: transparent;
+            color: #22c55e;
+            font-weight: 600;
+            padding: 10px;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .logout-button:hover {
+            background-color: #22c55e;
+            color: white;
+        }
+
+        .navbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            border-top: 1px solid #e5e7eb;
+            z-index: 10;
+        }
+
+        .nav-item {
+            text-align: center;
+            font-size: 12px;
+            color: #111827;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .nav-item .material-symbols-rounded {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="app-bar">
+            <a href="dashboard.html" class="back-button">
+                <span class="material-symbols-rounded">arrow_back</span>
+            </a>
+            <p class="app-title">Akun</p>
+        </div>
+
+        <div class="main-content">
+            <div class="hero-section"></div>
+            <div class="content-wrapper">
+                <div class="profile-section">
+                    <a href="akun-pengaturan.html" class="profile-info">
+                        <img src="https://avatar.iran.liara.run/public/11" alt="Avatar" class="avatar" />
+                        <div>
+                            <div class="profile-name">John Doe</div>
+                            <div class="profile-id">203975</div>
+                        </div>
+                    </a>
+                    <button class="withdraw-button" onclick="alert('Fitur tarik saldo belum tersedia.')">
+                        <span class="material-symbols-rounded">account_balance_wallet</span>
+                        Tarik Saldo
+                    </button>
+                </div>
+
+                <div class="menu-card">
+                    <a href="akun-pengaturan.html" class="menu-item">
+                        <div class="menu-left">
+                            <span class="material-symbols-rounded">manage_accounts</span>
+                            <span class="menu-text">Pengaturan</span>
+                        </div>
+                        <span class="material-symbols-rounded">chevron_right</span>
+                    </a>
+                    <a href="#" class="menu-item">
+                        <div class="menu-left">
+                            <span class="material-symbols-rounded">help</span>
+                            <span class="menu-text">Pusat Bantuan</span>
+                        </div>
+                        <span class="material-symbols-rounded">chevron_right</span>
+                    </a>
+                    <a href="#" class="menu-item">
+                        <div class="menu-left">
+                            <span class="material-symbols-rounded">book</span>
+                            <span class="menu-text">Syarat & Ketentuan</span>
+                        </div>
+                        <span class="material-symbols-rounded">chevron_right</span>
+                    </a>
+                    <a href="#" class="menu-item">
+                        <div class="menu-left">
+                            <span class="material-symbols-rounded">info</span>
+                            <span class="menu-text">Tentang Kusaku</span>
+                        </div>
+                        <span class="material-symbols-rounded">chevron_right</span>
+                    </a>
+                </div>
+
+                <button class="logout-button" onclick="window.location.href='login.html'">
+                    <span class="material-symbols-rounded">logout</span>
+                    KELUAR APLIKASI
+                </button>
+            </div>
+        </div>
+
+        <div class="navbar">
+            <a href="dashboard.html" class="nav-item">
+                <span class="material-symbols-rounded">home</span>
+                Beranda
+            </a>
+            <a href="transaction-history.html" class="nav-item">
+                <span class="material-symbols-rounded">receipt_long</span>
+                Riwayat
+            </a>
+            <a href="akun-pengaturan.html" class="nav-item">
+                <span class="material-symbols-rounded">person</span>
+                Akun
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>
