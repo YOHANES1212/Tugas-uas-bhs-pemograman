@@ -1,282 +1,290 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Reset PIN</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Red+Rose:wght@300..700&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reset PIN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Red+Rose:wght@300..700&display=swap"
+    rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.5;
+    }
+
+    .container {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .main-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      background-color: #f0fdf4;
+      padding: 16px;
+    }
+
+    .content-wrapper {
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .illustration {
+      width: 160px;
+      height: 160px;
+      border-radius: 20px;
+      margin: 0 auto;
+      overflow: hidden;
+      animation: float 3s ease-in-out infinite;
+      transition: transform 0.4s ease;
+    }
+
+    .illustration:hover {
+      transform: scale(1.05);
+    }
+
+    .illustration img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .header-section {
+      margin: 32px 0 20px;
+      text-align: center;
+    }
+
+    .title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 8px;
+    }
+
+    .description {
+      font-size: 12px;
+      font-weight: 500;
+      color: #9ca3af;
+      line-height: 1.4;
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .input-field {
+      width: 100%;
+      border-radius: 16px;
+      border: 1px solid #9ca3af;
+      background-color: white;
+      padding: 12px 48px;
+      font-size: 14px;
+      font-weight: 400;
+      color: #111827;
+      outline: none;
+      transition: 0.2s ease;
+      font-family: 'Courier New', monospace;
+      letter-spacing: 2px;
+      text-align: center;
+    }
+
+    .input-field::placeholder {
+      color: #9ca3af;
+    }
+
+    .input-field:focus {
+      box-shadow: 0 0 0 2px #4ade80;
+      border-color: #4ade80;
+    }
+
+    .input-icon {
+      position: absolute;
+      top: 50%;
+      left: 16px;
+      transform: translateY(-50%);
+      pointer-events: none;
+      font-size: 20px;
+      color: #9ca3af;
+    }
+
+    .submit-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 16px;
+      background-color: #10b981;
+      padding: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .submit-button:hover {
+      background-color: #047857;
+    }
+
+    .submit-button:disabled {
+      cursor: not-allowed;
+      background-color: #e5e7eb;
+      color: #9ca3af;
+    }
+
+    .button-icon::before {
+      content: "▶";
+      font-size: 14px;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
       }
 
-      html, body {
-        height: 100%;
-        width: 100%;
+      50% {
+        transform: translateY(-8px);
       }
 
-      body {
-        font-family: 'Inter', sans-serif;
-        line-height: 1.5;
+      100% {
+        transform: translateY(0px);
       }
+    }
 
-      .container {
-        width: 100vw;
-        height: 100vh;
-      }
-
-      .main-wrapper {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        background-color: #f0fdf4; /* green-50 */
-        padding: 16px;
-      }
-
-      .content-wrapper {
-        width: 100%;
-        max-width: 400px;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .illustration {
-        width: 160px;
-        height: 160px;
-        background-color: #dbeafe;
-        border-radius: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 48px;
-        margin: 0 auto;
-        border: 2px dashed #93c5fd;
-      }
-
-      .header-section {
-        margin: 32px 0 20px;
-        text-align: center;
-      }
-
-      .title {
-        font-size: 18px;
-        font-weight: 600;
-        color: #111827;
-        margin-bottom: 8px;
-      }
-
-      .description {
-        font-size: 12px;
-        font-weight: 500;
-        color: #9ca3af;
-        line-height: 1.4;
-      }
-
-      .form {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-      }
-
-      .input-wrapper {
-        position: relative;
-      }
-
+    @media (max-width: 480px) {
       .input-field {
-        width: 100%;
-        border-radius: 16px;
-        border: 1px solid #9ca3af;
-        background-color: white;
-        padding: 12px 48px;
-        font-size: 14px;
-        font-weight: 400;
-        color: #111827;
-        outline: none;
-        transition: 0.2s ease;
-        font-family: 'Courier New', monospace;
-        letter-spacing: 2px;
-        text-align: center;
-      }
-
-      .input-field::placeholder {
-        color: #9ca3af;
-      }
-
-      .input-field:focus {
-        box-shadow: 0 0 0 2px #4ade80;
-        border-color: #4ade80;
-      }
-
-      .input-icon {
-        position: absolute;
-        top: 50%;
-        left: 16px;
-        transform: translateY(-50%);
-        pointer-events: none;
-        font-size: 20px;
-        color: #9ca3af;
+        padding: 10px 40px;
+        font-size: 13px;
       }
 
       .submit-button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        border-radius: 16px;
-        background-color: #10b981;
-        padding: 10px;
-        font-size: 14px;
-        font-weight: 600;
-        text-transform: uppercase;
-        color: white;
-        border: none;
-        cursor: pointer;
-        transition: 0.2s ease;
+        padding: 8px;
+        font-size: 13px;
       }
 
-      .submit-button:hover {
-        background-color: #047857;
+      .illustration {
+        width: 120px;
+        height: 120px;
       }
 
-      .submit-button:disabled {
-        cursor: not-allowed;
-        background-color: #e5e7eb;
-        color: #9ca3af;
+      .title {
+        font-size: 16px;
       }
 
-      .button-icon::before {
-        content: "▶";
-        font-size: 14px;
+      .description {
+        font-size: 11px;
       }
+    }
 
-      /* Responsive */
-      @media (max-width: 480px) {
-        .input-field {
-          padding: 10px 40px;
-          font-size: 13px;
-        }
+    .input-field::-webkit-outer-spin-button,
+    .input-field::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
 
-        .submit-button {
-          padding: 8px;
-          font-size: 13px;
-        }
+    .input-field[type=number] {
+      -moz-appearance: textfield;
+    }
+  </style>
+</head>
 
-        .illustration {
-          width: 120px;
-          height: 120px;
-        }
+<body>
+  <div class="container">
+    <div class="main-wrapper">
+      <div class="content-wrapper">
 
-        .title {
-          font-size: 16px;
-        }
+        <div class="illustration">
+          <img src="../img/fingerprint.png" alt="Reset PIN" />
+        </div>
 
-        .description {
-          font-size: 11px;
-        }
-      }
+        <div class="header-section">
+          <h1 class="title">Reset PIN Lama</h1>
+          <p class="description">Buat PIN yang aman dan mudah diingat</p>
+        </div>
 
-      
-      .input-field::-webkit-outer-spin-button,
-      .input-field::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-      }
-
-      .input-field[type=number] {
-        -moz-appearance: textfield;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="main-wrapper">
-        <div class="content-wrapper">
-         
-          <div class="illustration"></div>
-
-          
-          <div class="header-section">
-            <h1 class="title">Reset PIN Lama</h1>
-            <p class="description">Buat PIN yang aman dan mudah diingat</p>
+        <form class="form">
+          <div class="input-wrapper">
+            <input type="password" placeholder="6 Digit PIN" class="input-field pin-input" maxlength="6"
+              pattern="[0-9]{6}" />
+            <div class="input-icon"></div>
           </div>
 
-          
-          <form class="form">
-            
-            <div class="input-wrapper">
-              <input
-                type="password"
-                placeholder="6 Digit PIN"
-                class="input-field pin-input"
-                maxlength="6"
-                pattern="[0-9]{6}"
-              />
-              <div class="input-icon"></div>
-            </div>
+          <div class="input-wrapper">
+            <input type="password" placeholder="Konfirmasi Ulang PIN" class="input-field pin-input" maxlength="6"
+              pattern="[0-9]{6}" />
+            <div class="input-icon"></div>
+          </div>
 
-            
-            <div class="input-wrapper">
-              <input
-                type="password"
-                placeholder="Konfirmasi Ulang PIN"
-                class="input-field pin-input"
-                maxlength="6"
-                pattern="[0-9]{6}"
-              />
-              <div class="input-icon"></div>
-            </div>
-
-            
-            <button type="button" class="submit-button" disabled>
-              <span>Reset PIN</span>
-              <span class="button-icon"></span>
-            </button>
-          </form>
-        </div>
+          <button type="button" class="submit-button" disabled>
+            <span>Reset PIN</span>
+            <span class="button-icon"></span>
+          </button>
+        </form>
       </div>
     </div>
+  </div>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const pinInputs = document.querySelectorAll('.pin-input');
-        const submitButton = document.querySelector('.submit-button');
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const pinInputs = document.querySelectorAll('.pin-input');
+      const submitButton = document.querySelector('.submit-button');
 
-        pinInputs.forEach(input => {
-          input.addEventListener('input', function() {
-            this.value = this.value.replace(/[^0-9]/g, '');
-            validatePINs();
-          });
+      pinInputs.forEach(input => {
+        input.addEventListener('input', function () {
+          this.value = this.value.replace(/[^0-9]/g, '');
+          validatePINs();
         });
+      });
 
-        function validatePINs() {
-          const pin1 = pinInputs[0].value;
-          const pin2 = pinInputs[1].value;
+      function validatePINs() {
+        const pin1 = pinInputs[0].value;
+        const pin2 = pinInputs[1].value;
 
-          if (pin1.length === 6 && pin2.length === 6 && pin1 === pin2) {
-            submitButton.disabled = false;
-          } else {
-            submitButton.disabled = true;
-          }
-
-          // Optional: Show browser-native validation error
-          if (pin2.length > 0 && pin1 !== pin2) {
-            pinInputs[1].setCustomValidity('PIN tidak cocok');
-          } else {
-            pinInputs[1].setCustomValidity('');
-          }
+        if (pin1.length === 6 && pin2.length === 6 && pin1 === pin2) {
+          submitButton.disabled = false;
+        } else {
+          submitButton.disabled = true;
         }
 
-        validatePINs();
-      });
-    </script>
-  </body>
+        if (pin2.length > 0 && pin1 !== pin2) {
+          pinInputs[1].setCustomValidity('PIN tidak cocok');
+        } else {
+          pinInputs[1].setCustomValidity('');
+        }
+      }
+
+      validatePINs();
+    });
+  </script>
+</body>
+
 </html>

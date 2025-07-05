@@ -31,7 +31,7 @@
             max-width: none;
         }
 
-        /* Avatar Section */
+        
         .avatar-section {
             display: flex;
             margin-bottom: 16px;
@@ -67,7 +67,7 @@
             color: #111827;
         }
 
-        /* Balance Card */
+        
         .balance-section {
             margin-bottom: 32px;
         }
@@ -107,7 +107,7 @@
             font-size: 24px;
         }
 
-        /* Action Buttons */
+        
         .action-buttons {
             display: flex;
             gap: 12px;
@@ -159,7 +159,7 @@
             font-size: 16px;
         }
 
-        /* Transaction History */
+        
         .transaction-card {
             background: white;
             border-radius: 20px;
@@ -197,7 +197,7 @@
             box-shadow: 0 0 0 2px #4ade80;
         }
 
-        /* Transaction Items */
+        
         .transaction-item {
             display: flex;
             justify-content: space-between;
@@ -277,7 +277,7 @@
             background-color: #d1d5db;
         }
 
-        /* Navigation Bar */
+        
         .navbar {
             position: fixed;
             bottom: 0;
@@ -318,7 +318,7 @@
             font-weight: 600;
         }
 
-        /* Modal Styles */
+        
         .modal {
             position: fixed;
             top: 0;
@@ -501,7 +501,7 @@
             box-shadow: 0 0 0 2px #4ade80;
         }
 
-        /* Desktop Responsive Design */
+        
         @media (min-width: 769px) {
             .container {
                 padding: 24px;
@@ -540,7 +540,7 @@
             }
         }
 
-        /* Large screens */
+        
         @media (min-width: 1024px) {
             .container {
                 padding: 32px;
@@ -555,7 +555,7 @@
 <body>
     <div class="container">
         <div class="main-content">
-            <!-- Avatar Section -->
+            
             <div class="avatar-section">
                 <a href="../pages/akun-pengaturan.html" class="avatar-link">
                     <img src="https://avatar.iran.liara.run/public/11" alt="Avatar" class="avatar-img">
@@ -563,9 +563,9 @@
                 </a>
             </div>
 
-            <!-- Balance Section -->
+            
             <div class="balance-section">
-                <!-- Balance Card -->
+                
                 <div class="balance-card">
                     <h1 class="brand-title">Kusaku</h1>
                     <h2 class="balance-amount">
@@ -576,7 +576,7 @@
                     </h2>
                 </div>
 
-                <!-- Action Buttons -->
+                
                 <div class="action-buttons">
                     <button type="button" class="btn btn-outline" data-modal-target="modal-topup">
                         <span class="material-symbols-outlined">download</span>
@@ -589,14 +589,14 @@
                 </div>
             </div>
 
-            <!-- Transaction History -->
+            
             <div class="transaction-card">
                 <div class="transaction-header">
                     <p class="transaction-title">Riwayat Transaksi</p>
                     <a href="#" class="view-more-link">Lihat Lainnya</a>
                 </div>
 
-                <!-- Transaction Items -->
+                
                 <a href="#" class="transaction-item">
                     <div class="transaction-left">
                         <span class="material-symbols-outlined transaction-icon">download</span>
@@ -658,7 +658,7 @@
             </div>
         </div>
 
-        <!-- Navigation Bar -->
+        
         <nav class="navbar">
             <a href="#" class="nav-item">
                 <span class="material-symbols-outlined nav-icon">home</span>
@@ -674,7 +674,7 @@
             </a>
         </nav>
 
-        <!-- Modal Top Up -->
+        
         <div id="modal-topup" class="modal">
             <div class="modal-header">
                 <button type="button" class="modal-btn invisible">
@@ -702,7 +702,7 @@
             </div>
         </div>
 
-        <!-- Modal Transfer -->
+        
         <div id="modal-transfer" class="modal">
             <div class="modal-header">
                 <button type="button" id="button-back-modal-content" class="modal-btn invisible">
@@ -715,7 +715,7 @@
                 </button>
             </div>
             <div class="modal-content">
-                <!-- Account Check Section -->
+                
                 <div id="modal-content--account-check" class="section">
                     <form class="modal-form">
                         <div class="contact-header">
@@ -739,7 +739,7 @@
                     </form>
                 </div>
 
-                <!-- Search Contact Section -->
+                
                 <div id="modal-content--search-contact" class="section hidden">
                     <div class="input-group">
                         <div class="input-wrapper">
@@ -804,7 +804,7 @@
                     </a>
                 </div>
 
-                <!-- Input Nominal Section -->
+                
                 <div id="modal-content--input-nominal" class="section hidden">
                     <form class="modal-form">
                         <div class="contact-header">
@@ -906,7 +906,7 @@
             });
         });
 
-        // Top Up Logic
+        
         document.querySelector('#modal-topup .btn-filled').addEventListener('click', () => {
             const input = document.querySelector('#modal-topup input');
             const nominal = parseInt(input.value);
@@ -925,7 +925,7 @@
             }
         });
 
-        // Transfer Logic
+        
         document.querySelector('#modal-content--input-nominal .btn-filled').addEventListener('click', () => {
             const input = document.querySelector('#modal-content--input-nominal input');
             const nominal = parseInt(input.value);

@@ -1,15 +1,13 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login PIN</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Red+Rose:wght@300..700&display=swap"
-        rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
     <style>
         * {
             margin: 0;
@@ -33,7 +31,6 @@
         }
 
         .main-wrapper {
-            position: relative;
             display: flex;
             height: 100vh;
             flex-direction: column;
@@ -50,11 +47,25 @@
             flex-direction: column;
         }
 
+        @keyframes pulseBounce {
+
+            0%,
+            100% {
+                transform: scale(1) translateY(0);
+            }
+
+            50% {
+                transform: scale(1.05) translateY(-5px);
+            }
+        }
+
         .illustration {
             height: 160px;
             width: auto;
             margin: 0 auto;
             display: block;
+            animation: pulseBounce 2.5s infinite ease-in-out;
+            transform-origin: center;
         }
 
         .header {
@@ -102,7 +113,6 @@
             background-color: white;
             padding: 12px 48px;
             font-size: 14px;
-            font-weight: normal;
             color: #111827;
             outline: none;
             transition: all 0.2s ease;
@@ -113,7 +123,6 @@
         }
 
         .pin-input:focus {
-            outline: none;
             border-color: #4ade80;
             box-shadow: 0 0 0 2px rgba(74, 222, 128, 0.5);
         }
@@ -128,12 +137,6 @@
             box-shadow: 0 0 0 2px rgba(127, 29, 29, 0.5);
         }
 
-        .pin-input:disabled {
-            cursor: not-allowed;
-            border-color: #d1d5db;
-            background-color: #f3f4f6;
-        }
-
         .input-icon {
             position: absolute;
             top: 50%;
@@ -142,14 +145,6 @@
             color: #9ca3af;
             font-size: 20px;
             pointer-events: none;
-        }
-
-        .pin-input:invalid ~ .input-icon {
-            color: #ef4444;
-        }
-
-        .pin-input:focus:invalid ~ .input-icon {
-            color: #7f1d1d;
         }
 
         .continue-button {
@@ -164,7 +159,6 @@
             font-weight: 600;
             text-transform: uppercase;
             color: white;
-            text-decoration: none;
             border: none;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -179,21 +173,16 @@
             box-shadow: 0 0 0 2px rgba(74, 222, 128, 0.5);
         }
 
-        .continue-button:disabled {
-            cursor: not-allowed;
-            background-color: #e5e7eb;
-            color: #9ca3af;
-        }
-
-        .button-icon {
-            font-size: 20px;
+        .button-icon::after {
+            content: "›";
+            font-size: 24px;
+            font-weight: bold;
         }
 
         .help-text {
             margin-top: 12px;
             text-align: center;
             font-size: 12px;
-            font-weight: normal;
             color: #a3a3a3;
         }
 
@@ -202,104 +191,82 @@
             font-weight: 600;
             color: #22c55e;
             text-decoration: none;
-            transition: color 0.2s ease;
         }
 
         .forgot-link:hover {
             color: rgba(34, 197, 94, 0.7);
         }
 
-        .forgot-link:focus {
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(74, 222, 128, 0.5);
-        }
-
-        /* Icon styles - using Unicode symbols as fallback */
-        .security-icon::before {
-            content: "";
-        }
-
-        .chevron-icon::after {
-            content: "›";
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        /* Responsive design */
         @media (max-width: 768px) {
             .container {
                 padding: 12px;
             }
-            
+
             .main-wrapper {
                 padding: 12px;
             }
-            
+
             .illustration {
                 height: 140px;
             }
-            
+
             .title {
                 font-size: 16px;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="main-wrapper">
             <div class="content-wrapper">
-                
                 <svg class="illustration" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="80" cy="80" r="60" fill="#22c55e" opacity="0.1"/>
-                    <circle cx="80" cy="80" r="40" fill="#22c55e" opacity="0.2"/>
-                    <circle cx="80" cy="80" r="20" fill="#22c55e" opacity="0.3"/>
-                    <path d="M80 50C65 50 53 62 53 77V83C53 98 65 110 80 110C95 110 107 98 107 83V77C107 62 95 50 80 50Z" fill="#22c55e"/>
-                    <rect x="70" y="70" width="20" height="30" rx="2" fill="white"/>
-                    <circle cx="80" cy="75" r="3" fill="#22c55e"/>
+                    <circle cx="80" cy="80" r="60" fill="#22c55e" opacity="0.1" />
+                    <circle cx="80" cy="80" r="40" fill="#22c55e" opacity="0.2" />
+                    <circle cx="80" cy="80" r="20" fill="#22c55e" opacity="0.3" />
+                    <path
+                        d="M80 50C65 50 53 62 53 77V83C53 98 65 110 80 110C95 110 107 98 107 83V77C107 62 95 50 80 50Z"
+                        fill="#22c55e" />
+                    <rect x="70" y="70" width="20" height="30" rx="2" fill="white" />
+                    <circle cx="80" cy="75" r="3" fill="#22c55e" />
                 </svg>
-                
-
-                
                 <div class="header">
                     <h1 class="title">Masukan 6 Digit PIN</h1>
                     <p class="description">Masukan 6 Digit PIN yang telah Anda daftarkan sebelumnya</p>
                 </div>
-                
-
-                
-                <form method="post" action="#" class="form">
-                    
+                <form class="form" id="pin-form">
                     <div class="input-group">
                         <div class="input-wrapper">
-                            <input
-                                type="password"
-                                placeholder="6 Digit PIN"
-                                class="pin-input"
-                                maxlength="6"
-                                pattern="[0-9]{6}"
-                            />
-                            <div class="input-icon security-icon"></div>
+                            <input type="password" id="pin" placeholder="6 Digit PIN" class="pin-input" maxlength="6"
+                                pattern="[0-9]{6}" required />
+                            <div class="input-icon"></div>
                         </div>
                     </div>
-                    
-
-                    
-                    <a href="/pages/dashboard.html" class="continue-button">
+                    <button type="submit" class="continue-button">
                         <span>Lanjutkan</span>
-                        <span class="button-icon chevron-icon"></span>
-                    </a>
-                    
+                        <span class="button-icon"></span>
+                    </button>
                 </form>
-                
-
-                
                 <p class="help-text">
                     <a href="/pages/login-pin-forgot.html" class="forgot-link">Saya lupa PIN</a>
                 </p>
-                
             </div>
         </div>
     </div>
+    <script>
+        const form = document.getElementById('pin-form');
+        const pin = document.getElementById('pin');
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const value = pin.value.trim();
+            if (/^\d{6}$/.test(value)) {
+                window.location.href = "/pages/dashboard.html";
+            } else {
+                alert("PIN harus terdiri dari 6 digit angka.");
+            }
+        });
+    </script>
 </body>
+
 </html>

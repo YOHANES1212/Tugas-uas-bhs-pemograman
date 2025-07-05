@@ -182,13 +182,11 @@
 
 <body>
   <div class="container">
-    <!-- App Bar -->
     <div class="app-bar">
       <a onclick="history.back()">←</a>
       <p class="text-lg font-semibold">Status Transaksi</p>
     </div>
 
-    <!-- Main -->
     <div class="main">
       <div class="header-bg"></div>
       <div class="card-section">
@@ -225,7 +223,6 @@
       </div>
     </div>
 
-    <!-- Navbar -->
     <div class="navbar">
       <a href="../pages/dashboard.html" class="nav-item">Beranda</a>
       <a href="../pages/transaction-history.html" class="nav-item">Riwayat</a>
@@ -233,13 +230,11 @@
     </div>
   </div>
 
-  <!-- Script -->
   <script>
     function cancelTransaction() {
       const confirmCancel = confirm("Apakah Anda yakin ingin membatalkan transaksi ini?");
       if (confirmCancel) {
         alert("Transaksi berhasil dibatalkan.\nSaldo Anda akan dikembalikan.");
-        
       }
     }
   </script>

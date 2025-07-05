@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,10 +8,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicon/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon/favicon-16x16.png" />
-  <link rel="manifest" href="../assets/images/favicon/site.webmanifest" />
   <style>
     * {
       margin: 0;
@@ -18,7 +15,8 @@
       box-sizing: border-box;
     }
 
-    html, body {
+    html,
+    body {
       width: 100%;
       height: 100%;
       font-family: 'Inter', sans-serif;
@@ -47,6 +45,20 @@
       max-width: 100%;
       margin: 0 auto;
       display: block;
+      animation: bounce 2s infinite;
+      transform-origin: bottom;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
     }
 
     .text-group {
@@ -200,40 +212,30 @@
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <div class="content">
-      
-      <img src="../assets/images/fingerprint.svg" alt="Illustration" class="illustration" />
-
-      
+      <img src="../img/fingerprint.png" alt="Fingerprint" class="illustration" />
       <div class="text-group">
         <h1>Buat 6 Digit PIN</h1>
         <p>Buatlah 6 digit PIN untuk masuk lebih aman</p>
       </div>
-
-      
       <form class="form" method="post" action="#">
-        
         <div class="input-wrapper">
           <input type="password" placeholder="6 Digit PIN" class="input-field" maxlength="6" pattern="[0-9]{6}" />
           <div class="icon-placeholder"></div>
         </div>
-
-        
         <div class="input-wrapper">
-          <input type="password" placeholder="Konfirmasi Ulang PIN" class="input-field" maxlength="6" pattern="[0-9]{6}" />
+          <input type="password" placeholder="Konfirmasi Ulang PIN" class="input-field" maxlength="6"
+            pattern="[0-9]{6}" />
           <div class="icon-placeholder"></div>
         </div>
-
-        
         <a href="/pages/register-email-confirm.html" class="btn">
           <span>Lanjutkan</span>
           <span>➡</span>
         </a>
       </form>
-
-      
       <p class="footer-text">
         Dengan masuk atau daftar, Anda sudah setuju dengan
         <a href="#">Ketentuan Layanan</a> dan
@@ -242,4 +244,5 @@
     </div>
   </div>
 </body>
+
 </html>

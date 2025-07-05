@@ -227,17 +227,13 @@
 </head>
 
 <body>
-
     <div class="app-bar">
         <a href="#" class="back-button" onclick="history.back()">
             <span class="material-symbols-rounded">arrow_back</span>
         </a>
         <p class="app-title">Pengaturan Akun</p>
     </div>
-
     <div class="main-content">
-
-        <!-- Form Info -->
         <form class="card" id="form-info">
             <div class="card-title">Informasi Personal</div>
             <div class="file-upload-container">
@@ -266,8 +262,6 @@
                 <span class="material-symbols-rounded">save</span> SIMPAN
             </button>
         </form>
-
-        <!-- Form PIN -->
         <form class="card" id="form-pin">
             <div class="card-title">Keamanan PIN</div>
             <div class="form-group">
@@ -298,8 +292,6 @@
                 <span class="material-symbols-rounded">save</span> SIMPAN
             </button>
         </form>
-
-        <!-- Form Penarikan -->
         <form class="card" id="form-bank">
             <div class="card-title">Penarikan Dana</div>
             <div class="form-group">
@@ -336,15 +328,11 @@
             </button>
         </form>
     </div>
-
-    <!-- Navbar -->
     <div class="navbar">
         <a href="#" class="nav-item"><span class="material-symbols-rounded">home</span><span>Beranda</span></a>
         <a href="#" class="nav-item"><span class="material-symbols-rounded">receipt_long</span><span>Riwayat</span></a>
         <a href="#" class="nav-item"><span class="material-symbols-rounded">person</span><span>Akun</span></a>
     </div>
-
-    <!-- Interaktif Script -->
     <script>
         const preview = document.getElementById('preview');
         const fileUpload = document.getElementById('file-upload');
@@ -365,7 +353,6 @@
             }
         });
 
-        // Validasi PIN Baru
         const formPin = document.getElementById('form-pin');
         formPin.addEventListener('submit', function (e) {
             const newPin = document.getElementById('new-pin').value;
@@ -378,20 +365,17 @@
             }
         });
 
-        // Validasi rekening hanya angka
         const rekening = document.getElementById('account-number');
         rekening.addEventListener('input', () => {
             rekening.value = rekening.value.replace(/\D/g, '');
         });
 
-        // Umum: alert jika valid
         document.querySelectorAll('form').forEach(form => {
             form.addEventListener('submit', function (e) {
                 if (!form.checkValidity()) {
                     e.preventDefault();
                     alert('Harap lengkapi semua isian.');
                 } else {
-                    // Optional: alert sukses
                     if (form.id !== 'form-pin') alert('Data berhasil disimpan!');
                 }
             });

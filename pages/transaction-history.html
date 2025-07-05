@@ -166,7 +166,6 @@
     </div>
 
     <div class="transaction-card" id="transaction-list">
-      <!-- Item 1 -->
       <div class="transaction-item">
         <div class="transaction-info">
           <span class="icon"></span>
@@ -181,7 +180,6 @@
       </div>
       <div class="divider"></div>
 
-      <!-- Item 2 -->
       <div class="transaction-item">
         <div class="transaction-info">
           <span class="icon"></span>
@@ -196,7 +194,6 @@
       </div>
       <div class="divider"></div>
 
-      <!-- Item 3 -->
       <div class="transaction-item">
         <div class="transaction-info">
           <span class="icon"></span>
@@ -211,7 +208,6 @@
       </div>
       <div class="divider"></div>
 
-      <!-- Item 4 -->
       <div class="transaction-item">
         <div class="transaction-info">
           <span class="icon"></span>
@@ -227,7 +223,6 @@
     </div>
   </div>
 
-  <!-- Navbar -->
   <div class="navbar">
     <a href="../pages/dashboard.html" class="nav-item">Beranda</a>
     <a href="../pages/transaction-history.html" class="nav-item">Riwayat</a>
@@ -240,11 +235,7 @@
       const lower = keyword.toLowerCase();
       items.forEach(item => {
         const name = item.querySelector('.transaction-name').innerText.toLowerCase();
-        if (name.includes(lower)) {
-          item.style.display = '';
-        } else {
-          item.style.display = 'none';
-        }
+        item.style.display = name.includes(lower) ? '' : 'none';
       });
     }
   </script>
