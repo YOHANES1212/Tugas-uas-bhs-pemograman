@@ -236,16 +236,16 @@
       <h1 class="title">Masuk</h1>
       <p class="description">Masuk kembali dengan akun Anda</p>
 
-      <form method="post" action="#">
+      <form id="loginForm">
         <div class="input-group">
-          <input type="email" placeholder="Email" class="input-field" required />
+          <input type="email" id="email" placeholder="Email" class="input-field" required />
           <span class="input-icon"></span>
         </div>
 
-        <a href="login-pin.html" class="button">
+        <button type="submit" class="button">
           <span>Lanjutkan</span>
           <span class="button-icon">▶</span>
-        </a>
+        </button>
       </form>
 
       <p class="help-text">
@@ -254,6 +254,22 @@
       </p>
     </div>
   </div>
+
+  <script>
+    const form = document.getElementById("loginForm");
+    const emailInput = document.getElementById("email");
+
+    form.addEventListener("submit", function (event) {
+      if (emailInput.value.trim() === "") {
+        alert("Silakan masukkan email terlebih dahulu.");
+        emailInput.focus();
+        event.preventDefault();
+      } else {
+        event.preventDefault();
+        window.location.href = "login-pin.html";
+      }
+    });
+  </script>
 </body>
 
 </html>
